@@ -133,7 +133,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(766, 9);
+            this.label6.Location = new System.Drawing.Point(798, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(224, 28);
@@ -153,7 +153,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(1048, 51);
+            this.checkBox3.Location = new System.Drawing.Point(1076, 51);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(83, 25);
             this.checkBox3.TabIndex = 11;
@@ -162,11 +162,11 @@
             // 
             // buttonvv
             // 
-            this.buttonvv.Location = new System.Drawing.Point(644, 88);
+            this.buttonvv.Location = new System.Drawing.Point(719, 95);
             this.buttonvv.Name = "buttonvv";
-            this.buttonvv.Size = new System.Drawing.Size(470, 35);
+            this.buttonvv.Size = new System.Drawing.Size(351, 35);
             this.buttonvv.TabIndex = 12;
-            this.buttonvv.Text = "Ввести условия ";
+            this.buttonvv.Text = "Построить ";
             this.buttonvv.UseVisualStyleBackColor = true;
             this.buttonvv.Click += new System.EventHandler(this.buttonvv_Click);
             // 
@@ -174,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 767);
+            this.ClientSize = new System.Drawing.Size(1363, 767);
             this.Controls.Add(this.buttonvv);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);

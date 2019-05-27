@@ -66,9 +66,43 @@ namespace V1
             tb.ShortcutsEnabled = false;
         }
 
-        private void buttonvv_Click(object sender, EventArgs e)// ввод граничных условий 
+        private void buttonvv_Click(object sender, EventArgs e) // ввод граничных условий и построение графика 
         {
+            try
+            {
+                //проверка вводв ивда граничных условий 
 
+                if (checkBox2.Checked == false && checkBox3.Checked == false)
+                    throw new ApplicationException("Выберите вид граничных условий!");
+
+                if (checkBox2.Checked == true && checkBox3.Checked == true)
+                    throw new ApplicationException("Выберите только один вид граничных условий");
+
+                if (checkBox2.Checked == true) // Граничные условия второго рода 
+                {
+                    /*if (y1 == 0 && y2 == 0 && y3 == 0)
+                    {
+                        throw new Exception("Система не имеет решений.");
+                    }
+                    double y_1 = 0.0, y_2 = 0.0, y_3 = 0.0; ;*/
+
+                }
+                if (checkBox3.Checked == true) // Граничные условия третьего рода 
+                {
+                    /*if (y1 == 0 && y2 == 0 && y3 == 0)
+                    {
+                        throw new Exception("Система не имеет решений.");
+                    }
+                    double y_1 = 0.0, y_2 = 0.0, y_3 = 0.0; ;*/
+
+                }
+
+            }
+
+            catch (ApplicationException mes)
+            {
+                MessageBox.Show(mes.Message);
+            }
 
         }
     }
