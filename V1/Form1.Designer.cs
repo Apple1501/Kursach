@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             this.textBoxk2 = new System.Windows.Forms.TextBox();
             this.buttonPost2 = new System.Windows.Forms.Button();
             this.buttonPost3 = new System.Windows.Forms.Button();
+            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.SuspendLayout();
             // 
             // label1
@@ -364,11 +366,28 @@
             this.buttonPost3.UseVisualStyleBackColor = true;
             this.buttonPost3.Visible = false;
             // 
+            // zedGraphControl1
+            // 
+            this.zedGraphControl1.Location = new System.Drawing.Point(32, 264);
+            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.zedGraphControl1.Name = "zedGraphControl1";
+            this.zedGraphControl1.ScrollGrace = 0D;
+            this.zedGraphControl1.ScrollMaxX = 0D;
+            this.zedGraphControl1.ScrollMaxY = 0D;
+            this.zedGraphControl1.ScrollMaxY2 = 0D;
+            this.zedGraphControl1.ScrollMinX = 0D;
+            this.zedGraphControl1.ScrollMinY = 0D;
+            this.zedGraphControl1.ScrollMinY2 = 0D;
+            this.zedGraphControl1.Size = new System.Drawing.Size(874, 534);
+            this.zedGraphControl1.TabIndex = 30;
+            this.zedGraphControl1.UseExtendedPrintDialog = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 801);
+            this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.buttonPost3);
             this.Controls.Add(this.buttonPost2);
             this.Controls.Add(this.textBoxk2);
@@ -441,6 +460,7 @@
         private System.Windows.Forms.TextBox textBoxk2;
         private System.Windows.Forms.Button buttonPost2;
         private System.Windows.Forms.Button buttonPost3;
+        private ZedGraph.ZedGraphControl zedGraphControl1;
     }
 }
 

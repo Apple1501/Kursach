@@ -128,7 +128,26 @@ namespace V1
                 //проверка вводв ивда граничных условий 
 
                 if (checkBox2.Checked == false && checkBox3.Checked == false)
+                {
+                    labelT1.Visible = false;
+                    labelT2.Visible = false;
+                    labelK.Visible = false;
+                    labelteplook.Visible = false;
+                    textBoxk1.Visible = false;
+                    textBoxk2.Visible = false;
+                    textBoxT1.Visible = false;
+                    textBoxT2.Visible = false;
+                    buttonPost3.Visible = false;
+                    labelq1.Visible = false;
+                    labelq2.Visible = false;
+                    labelteplo.Visible = false;
+                    textBoxq1.Visible = false;
+                    textBoxq2.Visible = false;
+                    buttonPost2.Visible = false;
+
                     throw new ApplicationException("Выберите вид граничных условий!");
+                                     
+                }
 
                 if (checkBox2.Checked == true && checkBox3.Checked == true)
                     throw new ApplicationException("Выберите только один вид граничных условий");
