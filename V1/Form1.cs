@@ -20,12 +20,32 @@ namespace V1
             textBoxc.KeyPress += InputKey;
             textBoxL.KeyPress += InputKey;
             textBoxt.KeyPress += InputKey;
+            textBoxq2.KeyPress += InputKey2;
+            textBoxT2.KeyPress += InputKey2;
+            textBoxT1.KeyPress += InputKey2;
+            textBoxk1.KeyPress += InputKey2;
+            textBoxk2.KeyPress += InputKey2;
+
             textBoxc.TextChanged += TextChanged;
             textBoxL.TextChanged += TextChanged;
             textBoxt.TextChanged += TextChanged;
+            textBoxT1.TextChanged += TextChanged;
+            textBoxq2.TextChanged += TextChanged;
+            textBoxq1.TextChanged += TextChanged;
+            textBoxT2.TextChanged += TextChanged;
+            textBoxk1.TextChanged += TextChanged;
+            textBoxk2.TextChanged += TextChanged;
+
             textBoxc.MouseEnter += MouseEnter;
             textBoxL.MouseEnter += MouseEnter;
             textBoxt.MouseEnter += MouseEnter;
+            textBoxT1.MouseEnter += MouseEnter;
+            textBoxq1.MouseEnter += MouseEnter;
+            textBoxq2.MouseEnter += MouseEnter;
+            textBoxk1.MouseEnter += MouseEnter;
+            textBoxk2.MouseEnter += MouseEnter;
+            textBoxT2.MouseEnter += MouseEnter;
+            
 
         }
 
@@ -48,6 +68,41 @@ namespace V1
                 return;
             }
             e.Handled = true;
+        }
+        //ввод только цифр, запятой и минуса  
+        void InputKey2(object sender, KeyPressEventArgs e)
+        {
+            //передача элемента управления 
+            TextBox tb = (TextBox)sender;
+            // проверка -ввод только цифр и Backspace
+            if (e.KeyChar >= '0' && e.KeyChar <= '9' || (e.KeyChar == (char)8) || (e.KeyChar == (char)45)) return;
+            //замена точки на запятую
+            if (e.KeyChar == '.') e.KeyChar = ',';
+
+           if (e.KeyChar == (char)45)
+            {
+                if (tb.Text.Length != 0 || tb.Text.IndexOf('-') != -1)
+                {
+                    e.Handled = true;
+                }
+                return;
+            }
+            
+
+            // проверка, что запятая только одна. И она не первый символ
+            if (e.KeyChar == ',')
+            {
+                if (tb.Text.Length == 0 || tb.Text.IndexOf(',') != -1)
+                {
+                    e.Handled = true;
+                }
+                return;
+            }
+             e.Handled = true;
+
+           
+
+
         }
 
         new void TextChanged(object sender, EventArgs e)
@@ -80,20 +135,43 @@ namespace V1
 
                 if (checkBox2.Checked == true) // Граничные условия второго рода 
                 {
-                    /*if (y1 == 0 && y2 == 0 && y3 == 0)
-                    {
-                        throw new Exception("Система не имеет решений.");
-                    }
-                    double y_1 = 0.0, y_2 = 0.0, y_3 = 0.0; ;*/
+                    labelq1.Visible = true;
+                    labelq2.Visible = true;
+                    labelteplo.Visible = true;
+                    textBoxq1.Visible = true;
+                    textBoxq2.Visible = true;
+                    buttonPost2.Visible = true;
+
+                    labelT1.Visible = false;
+                    labelT2.Visible = false;
+                    labelK.Visible = false;
+                    labelteplook.Visible = false;
+                    textBoxk1.Visible = false;
+                    textBoxk2.Visible = false;
+                    textBoxT1.Visible = false;
+                    textBoxT2.Visible = false;
+                    buttonPost3.Visible = false;
 
                 }
                 if (checkBox3.Checked == true) // Граничные условия третьего рода 
                 {
-                    /*if (y1 == 0 && y2 == 0 && y3 == 0)
-                    {
-                        throw new Exception("Система не имеет решений.");
-                    }
-                    double y_1 = 0.0, y_2 = 0.0, y_3 = 0.0; ;*/
+
+                    labelT1.Visible = true;
+                    labelT2.Visible = true;
+                    labelK.Visible = true;
+                    labelteplook.Visible = true;
+                    textBoxk1.Visible = true;
+                    textBoxk2.Visible = true;
+                    textBoxT1.Visible = true;
+                    textBoxT2.Visible = true;
+                    buttonPost3.Visible = true;
+
+                    labelq1.Visible = false;
+                    labelq2.Visible = false;
+                    labelteplo.Visible = false;
+                    textBoxq1.Visible = false;
+                    textBoxq2.Visible = false;
+                    buttonPost2.Visible = false;
 
                 }
 
@@ -105,5 +183,7 @@ namespace V1
             }
 
         }
+
+       
     }
 }
