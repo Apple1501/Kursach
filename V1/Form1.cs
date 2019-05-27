@@ -65,5 +65,11 @@ namespace V1
             TextBox tb = (TextBox)sender;
             tb.ShortcutsEnabled = false;
         }
+
+        private void buttonvv_Click(object sender, EventArgs e)// ввод граничных условий 
+        {
+
+
+        }
     }
 }

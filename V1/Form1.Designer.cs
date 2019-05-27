@@ -37,16 +37,20 @@
             this.textBoxc = new System.Windows.Forms.TextBox();
             this.textBoxL = new System.Windows.Forms.TextBox();
             this.textBoxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.buttonvv = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(175, 9);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(162, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 23);
+            this.label1.Size = new System.Drawing.Size(208, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Исходные данные ";
             // 
@@ -115,7 +119,7 @@
             // 
             this.textBoxL.Location = new System.Drawing.Point(135, 139);
             this.textBoxL.Name = "textBoxL";
-            this.textBoxL.Size = new System.Drawing.Size(248, 28);
+            this.textBoxL.Size = new System.Drawing.Size(250, 28);
             this.textBoxL.TabIndex = 7;
             // 
             // textBoxt
@@ -125,11 +129,56 @@
             this.textBoxt.Size = new System.Drawing.Size(249, 28);
             this.textBoxt.TabIndex = 8;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(766, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(224, 28);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Граничные условия ";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(631, 51);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(83, 25);
+            this.checkBox2.TabIndex = 10;
+            this.checkBox2.Text = "2 рода";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(1048, 51);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(83, 25);
+            this.checkBox3.TabIndex = 11;
+            this.checkBox3.Text = "3 рода";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // buttonvv
+            // 
+            this.buttonvv.Location = new System.Drawing.Point(644, 88);
+            this.buttonvv.Name = "buttonvv";
+            this.buttonvv.Size = new System.Drawing.Size(470, 35);
+            this.buttonvv.TabIndex = 12;
+            this.buttonvv.Text = "Ввести условия ";
+            this.buttonvv.UseVisualStyleBackColor = true;
+            this.buttonvv.Click += new System.EventHandler(this.buttonvv_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 767);
+            this.Controls.Add(this.buttonvv);
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxt);
             this.Controls.Add(this.textBoxL);
             this.Controls.Add(this.textBoxc);
@@ -160,6 +209,10 @@
         private System.Windows.Forms.TextBox textBoxc;
         private System.Windows.Forms.TextBox textBoxL;
         private System.Windows.Forms.TextBox textBoxt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button buttonvv;
     }
 }
 
