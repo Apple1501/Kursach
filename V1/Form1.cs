@@ -262,7 +262,7 @@ namespace V1
         {
             //считывание информации из текстбоксов 
             // кол-во пространнственных узлов 
-            int N = 20;
+            int N = 6;
             // время 
             double tend;
             // физические параметры объекта 
@@ -272,49 +272,59 @@ namespace V1
             try
             {
                 // считывание начальных данных
-                ro = Convert.ToDouble(textBoxp.Text);
-                c = Convert.ToDouble(textBoxc.Text);
-                lamda = Convert.ToDouble(textBoxKOTE.Text);
-                L = Convert.ToDouble(textBoxL.Text);
-                tend = Convert.ToDouble(textBoxt.Text);
-                T0 = Convert.ToDouble(textBoxT0.Text);
-                double time = 0.0;
+                /*  ro = Convert.ToDouble(textBoxp.Text);
+                  c = Convert.ToDouble(textBoxc.Text);
+                  lamda = Convert.ToDouble(textBoxKOTE.Text);
+                  L = Convert.ToDouble(textBoxL.Text);
+                  tend = Convert.ToDouble(textBoxt.Text);
+                  T0 = Convert.ToDouble(textBoxT0.Text);
+                  double time = 0.0;
 
-                if (textBoxq1.Text == "" && textBoxq2.Text == "")
-                {
-                    MessageBox.Show("Вы не ввели значения тепловых потоков. Поэтому q1=10^4,q2=10^3");
-                    q1 = 10000.0;
-                    q2 = 1000.0;
-                }
-                else
-                {
-                    // считывание значений тепловых потоков 
-                    q1 = Convert.ToDouble(textBoxq1.Text);
-                    q2 = Convert.ToDouble(textBoxq2.Text);
-                }
+                  if (textBoxq1.Text == "" && textBoxq2.Text == "")
+                  {
+                      MessageBox.Show("Вы не ввели значения тепловых потоков. Поэтому q1=10^4,q2=10^3");
+                      q1 = 10000.0;
+                      q2 = 1000.0;
+                  }
+                  else
+                  {
+                      // считывание значений тепловых потоков 
+                      q1 = Convert.ToDouble(textBoxq1.Text);
+                      q2 = Convert.ToDouble(textBoxq2.Text);
+                  }*/
+                ro = 200;
+                lamda = 200;
+                c = 200;
+
+                L = 0.2;
+                tend = 3;
+                T0 = 12;
+                double time = 0.0;
+                q1 = 10000.0;
+                q2 = 1000.0;
                 // шаг 
-               double h = L / (N - 1);
+                double h = L / N;
                 //коэффициент теплопроводности 
                 double a = lamda / (ro * c);
                 // шаг по времени
-                double tau = tend / 100;
-                double[] T=null;
-                double[] alfa = null;
-                double[] beta = null;
+                double tau = tend / 5;
+                double[] T=new double[N];
+                double[] alfa = new double[N];
+                double[] beta = new double[N];
                 double ai, ci, bi, fi;
 
                 for (int i = 0; i < N; i++)
                 {
                     T[i] = T0;
                 }
-                while (time >= tend)
+                while (tend>=time)
                 {
-                    time = time + tau;
+                   // time = time + tau;
                     //расчёт коэффициентов с учётом левого граничного условия 
                     alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
                     beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
 
-                    for (int i = 1; i < N - 1; i++)
+                    for (int i = 1; i < N; i++)
                     {
                         // расчёт прогоночных коэфициентов 
                         ai = lamda / (h * h);
@@ -326,9 +336,17 @@ namespace V1
                         beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
 
                     }
-
+                    // определение значения температуры на правой границе 
+                    T[N-1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N-1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
+                    // определяем неизвестные температуры 
+                    for (int i=N-2; i > -1;i--)
+                    {
+                        T[i] = alfa[i] * T[i + 1] + beta[i];
+                    }
+                    time = time + tau;
 
                 }
+                int k = 0;
 
 
             }
