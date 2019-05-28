@@ -62,6 +62,8 @@
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxKOTE = new System.Windows.Forms.TextBox();
+            this.labelT0 = new System.Windows.Forms.Label();
+            this.textBoxT0 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -147,7 +149,7 @@
             // 
             this.textBoxt.Location = new System.Drawing.Point(134, 246);
             this.textBoxt.Name = "textBoxt";
-            this.textBoxt.Size = new System.Drawing.Size(249, 28);
+            this.textBoxt.Size = new System.Drawing.Size(251, 28);
             this.textBoxt.TabIndex = 8;
             // 
             // label6
@@ -357,6 +359,7 @@
             this.buttonPost2.Text = "Вычислить ";
             this.buttonPost2.UseVisualStyleBackColor = true;
             this.buttonPost2.Visible = false;
+            this.buttonPost2.Click += new System.EventHandler(this.buttonPost2_Click);
             // 
             // buttonPost3
             // 
@@ -370,7 +373,7 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(15, 287);
+            this.zedGraphControl1.Location = new System.Drawing.Point(15, 325);
             this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
@@ -380,7 +383,7 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(874, 534);
+            this.zedGraphControl1.Size = new System.Drawing.Size(1304, 487);
             this.zedGraphControl1.TabIndex = 30;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
             // 
@@ -397,16 +400,36 @@
             // 
             // textBoxKOTE
             // 
-            this.textBoxKOTE.Location = new System.Drawing.Point(135, 149);
+            this.textBoxKOTE.Location = new System.Drawing.Point(134, 149);
             this.textBoxKOTE.Name = "textBoxKOTE";
-            this.textBoxKOTE.Size = new System.Drawing.Size(248, 28);
+            this.textBoxKOTE.Size = new System.Drawing.Size(250, 28);
             this.textBoxKOTE.TabIndex = 32;
+            // 
+            // labelT0
+            // 
+            this.labelT0.AutoSize = true;
+            this.labelT0.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelT0.Location = new System.Drawing.Point(54, 289);
+            this.labelT0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelT0.Name = "labelT0";
+            this.labelT0.Size = new System.Drawing.Size(72, 21);
+            this.labelT0.TabIndex = 33;
+            this.labelT0.Text = "T0(C) =";
+            // 
+            // textBoxT0
+            // 
+            this.textBoxT0.Location = new System.Drawing.Point(134, 289);
+            this.textBoxT0.Name = "textBoxT0";
+            this.textBoxT0.Size = new System.Drawing.Size(251, 28);
+            this.textBoxT0.TabIndex = 34;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 822);
+            this.ClientSize = new System.Drawing.Size(1333, 838);
+            this.Controls.Add(this.textBoxT0);
+            this.Controls.Add(this.labelT0);
             this.Controls.Add(this.textBoxKOTE);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.zedGraphControl1);
@@ -485,6 +508,8 @@
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxKOTE;
+        private System.Windows.Forms.Label labelT0;
+        private System.Windows.Forms.TextBox textBoxT0;
     }
 }
 

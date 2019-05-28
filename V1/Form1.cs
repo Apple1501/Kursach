@@ -29,6 +29,7 @@ namespace V1
             textBoxT1.KeyPress += InputKey2;
             textBoxk1.KeyPress += InputKey2;
             textBoxk2.KeyPress += InputKey2;
+            textBoxT0.KeyPress += InputKey2;
 
             textBoxc.TextChanged += TextChanged;
             textBoxL.TextChanged += TextChanged;
@@ -40,6 +41,7 @@ namespace V1
             textBoxk1.TextChanged += TextChanged;
             textBoxk2.TextChanged += TextChanged;
             textBoxKOTE.TextChanged += TextChanged;
+            textBoxT0.TextChanged += TextChanged;
 
             textBoxc.MouseEnter += MouseEnter;
             textBoxL.MouseEnter += MouseEnter;
@@ -51,8 +53,10 @@ namespace V1
             textBoxk2.MouseEnter += MouseEnter;
             textBoxT2.MouseEnter += MouseEnter;
             textBoxKOTE.MouseEnter += MouseEnter;
+            textBoxT0.MouseEnter += MouseEnter;
 
 
+            
         }
 
         //ввод только цифр и запятой 
@@ -254,6 +258,91 @@ namespace V1
             pane.YAxis.Scale.FontSpec.Size = 12;
         }
 
+        private void buttonPost2_Click(object sender, EventArgs e)// вычисление зависимости T(х) с граничными условиями второго рода
+        {
+            //считывание информации из текстбоксов 
+            // кол-во пространнственных узлов 
+            int N = 20;
+            // время 
+            double tend;
+            // физические параметры объекта 
+            double lamda, ro, q1, q2, T0, c;
+            //геометрические параметры объекта
+            double L;
+            try
+            {
+                // считывание начальных данных
+                ro = Convert.ToDouble(textBoxp.Text);
+                c = Convert.ToDouble(textBoxc.Text);
+                lamda = Convert.ToDouble(textBoxKOTE.Text);
+                L = Convert.ToDouble(textBoxL.Text);
+                tend = Convert.ToDouble(textBoxt.Text);
+                T0 = Convert.ToDouble(textBoxT0.Text);
+                double time = 0.0;
 
+                if (textBoxq1.Text == "" && textBoxq2.Text == "")
+                {
+                    MessageBox.Show("Вы не ввели значения тепловых потоков. Поэтому q1=10^4,q2=10^3");
+                    q1 = 10000.0;
+                    q2 = 1000.0;
+                }
+                else
+                {
+                    // считывание значений тепловых потоков 
+                    q1 = Convert.ToDouble(textBoxq1.Text);
+                    q2 = Convert.ToDouble(textBoxq2.Text);
+                }
+                // шаг 
+               double h = L / (N - 1);
+                //коэффициент теплопроводности 
+                double a = lamda / (ro * c);
+                // шаг по времени
+                double tau = tend / 100;
+                double[] T=null;
+                double[] alfa = null;
+                double[] beta = null;
+                double ai, ci, bi, fi;
+
+                for (int i = 0; i < N; i++)
+                {
+                    T[i] = T0;
+                }
+                while (time >= tend)
+                {
+                    time = time + tau;
+                    //расчёт коэффициентов с учётом левого граничного условия 
+                    alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
+                    beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
+
+                    for (int i = 1; i < N - 1; i++)
+                    {
+                        // расчёт прогоночных коэфициентов 
+                        ai = lamda / (h * h);
+                        ci = lamda / (h * h);
+                        bi = 2.0 * lamda / (h * h) + ro * c / tau;
+                        fi = (-1.0) * ro * c * T[i] / tau;
+                        // прогоночные коэффициенты 
+                        alfa[i] = ai / (bi - ci * alfa[i - 1]);
+                        beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
+
+                    }
+
+
+                }
+
+
+            }
+
+            catch (FormatException )
+            {
+                MessageBox.Show("Ошибка преобразования. Проверьте введенные значения");
+                
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Значение переменной выходит за границы типа double");
+            }
+
+        }
     }
 }
