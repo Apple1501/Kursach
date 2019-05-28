@@ -60,6 +60,8 @@
             this.buttonPost2 = new System.Windows.Forms.Button();
             this.buttonPost3 = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxKOTE = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -99,7 +101,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(66, 144);
+            this.label4.Location = new System.Drawing.Point(65, 208);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 21);
@@ -110,7 +112,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(74, 185);
+            this.label5.Location = new System.Drawing.Point(73, 249);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 21);
@@ -136,14 +138,14 @@
             // 
             // textBoxL
             // 
-            this.textBoxL.Location = new System.Drawing.Point(135, 139);
+            this.textBoxL.Location = new System.Drawing.Point(134, 203);
             this.textBoxL.Name = "textBoxL";
             this.textBoxL.Size = new System.Drawing.Size(250, 28);
             this.textBoxL.TabIndex = 7;
             // 
             // textBoxt
             // 
-            this.textBoxt.Location = new System.Drawing.Point(135, 182);
+            this.textBoxt.Location = new System.Drawing.Point(134, 246);
             this.textBoxt.Name = "textBoxt";
             this.textBoxt.Size = new System.Drawing.Size(249, 28);
             this.textBoxt.TabIndex = 8;
@@ -246,12 +248,12 @@
             // 
             this.labelteplook.AutoSize = true;
             this.labelteplook.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelteplook.Location = new System.Drawing.Point(736, 107);
+            this.labelteplook.Location = new System.Drawing.Point(770, 107);
             this.labelteplook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelteplook.Name = "labelteplook";
-            this.labelteplook.Size = new System.Drawing.Size(242, 23);
+            this.labelteplook.Size = new System.Drawing.Size(260, 23);
             this.labelteplook.TabIndex = 18;
-            this.labelteplook.Text = "Тепло окружающей среды";
+            this.labelteplook.Text = "Темпер. окружающей среды";
             this.labelteplook.Visible = false;
             // 
             // labelT1
@@ -298,7 +300,7 @@
             // 
             this.labelK.AutoSize = true;
             this.labelK.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelK.Location = new System.Drawing.Point(1041, 106);
+            this.labelK.Location = new System.Drawing.Point(1061, 107);
             this.labelK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelK.Name = "labelK";
             this.labelK.Size = new System.Drawing.Size(286, 23);
@@ -368,8 +370,8 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(32, 264);
-            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.zedGraphControl1.Location = new System.Drawing.Point(15, 287);
+            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
             this.zedGraphControl1.ScrollMaxX = 0D;
@@ -382,11 +384,31 @@
             this.zedGraphControl1.TabIndex = 30;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(42, 129);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 63);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Коэф-т \r\nтепл-ти =\r\n(Вт/м*С)\r\n";
+            // 
+            // textBoxKOTE
+            // 
+            this.textBoxKOTE.Location = new System.Drawing.Point(135, 149);
+            this.textBoxKOTE.Name = "textBoxKOTE";
+            this.textBoxKOTE.Size = new System.Drawing.Size(248, 28);
+            this.textBoxKOTE.TabIndex = 32;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 801);
+            this.ClientSize = new System.Drawing.Size(1327, 822);
+            this.Controls.Add(this.textBoxKOTE);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.buttonPost3);
             this.Controls.Add(this.buttonPost2);
@@ -461,6 +483,8 @@
         private System.Windows.Forms.Button buttonPost2;
         private System.Windows.Forms.Button buttonPost3;
         private ZedGraph.ZedGraphControl zedGraphControl1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxKOTE;
     }
 }
 

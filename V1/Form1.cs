@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using ZedGraph;
 
 namespace V1
 {
@@ -15,11 +17,13 @@ namespace V1
         public Form1()
         {
             InitializeComponent();
+            PaneSettings();
 
             // Подпись текстбоксов на событие 
             textBoxc.KeyPress += InputKey;
             textBoxL.KeyPress += InputKey;
             textBoxt.KeyPress += InputKey;
+            textBoxKOTE.KeyPress += InputKey;
             textBoxq2.KeyPress += InputKey2;
             textBoxT2.KeyPress += InputKey2;
             textBoxT1.KeyPress += InputKey2;
@@ -35,6 +39,7 @@ namespace V1
             textBoxT2.TextChanged += TextChanged;
             textBoxk1.TextChanged += TextChanged;
             textBoxk2.TextChanged += TextChanged;
+            textBoxKOTE.TextChanged += TextChanged;
 
             textBoxc.MouseEnter += MouseEnter;
             textBoxL.MouseEnter += MouseEnter;
@@ -45,7 +50,8 @@ namespace V1
             textBoxk1.MouseEnter += MouseEnter;
             textBoxk2.MouseEnter += MouseEnter;
             textBoxT2.MouseEnter += MouseEnter;
-            
+            textBoxKOTE.MouseEnter += MouseEnter;
+
 
         }
 
@@ -150,7 +156,24 @@ namespace V1
                 }
 
                 if (checkBox2.Checked == true && checkBox3.Checked == true)
+                {
+                    labelT1.Visible = false;
+                    labelT2.Visible = false;
+                    labelK.Visible = false;
+                    labelteplook.Visible = false;
+                    textBoxk1.Visible = false;
+                    textBoxk2.Visible = false;
+                    textBoxT1.Visible = false;
+                    textBoxT2.Visible = false;
+                    buttonPost3.Visible = false;
+                    labelq1.Visible = false;
+                    labelq2.Visible = false;
+                    labelteplo.Visible = false;
+                    textBoxq1.Visible = false;
+                    textBoxq2.Visible = false;
+                    buttonPost2.Visible = false;
                     throw new ApplicationException("Выберите только один вид граничных условий");
+                }
 
                 if (checkBox2.Checked == true) // Граничные условия второго рода 
                 {
@@ -203,6 +226,34 @@ namespace V1
 
         }
 
-       
+        //Настройка осей графика
+        private void PaneSettings()
+        {
+            // Получим панель для рисования
+            GraphPane pane = zedGraphControl1.GraphPane;
+            // По оси X установим автоматический подбор масштаба
+            pane.XAxis.Scale.MinAuto = true;
+            pane.XAxis.Scale.MaxAuto = true;
+            // По оси Y установим автоматический подбор масштаба
+            pane.YAxis.Scale.MinAuto = true;
+            pane.YAxis.Scale.MaxAuto = true;
+            // Вызываем метод AxisChange (), чтобы обновить данные об осях.
+            zedGraphControl1.AxisChange();
+            // Обновляем график
+            zedGraphControl1.Invalidate();
+            //Подпись осей
+            pane.XAxis.Title.Text = "Ось X";
+            pane.YAxis.Title.Text = "Ось T";
+            pane.Title.Text = "График зависимости T(x)";
+            pane.XAxis.MajorGrid.IsVisible = true;
+            pane.YAxis.MajorGrid.IsVisible = true;
+            pane.XAxis.MajorGrid.IsZeroLine = false;
+            pane.YAxis.MajorGrid.IsZeroLine = false;
+            // Устанавливаем интересующий нас интервал по оси X
+            pane.XAxis.Scale.FontSpec.Size = 12;
+            pane.YAxis.Scale.FontSpec.Size = 12;
+        }
+
+
     }
 }
