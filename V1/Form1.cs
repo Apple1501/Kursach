@@ -18,7 +18,7 @@ namespace V1
         {
             InitializeComponent();
             PaneSettings();
-
+          
             // Подпись текстбоксов на событие 
             textBoxc.KeyPress += InputKey;
             textBoxL.KeyPress += InputKey;
@@ -58,9 +58,13 @@ namespace V1
 
             
         }
+        GraphPane pane; // Графическая панель
+        LineItem Curve1, Curve2, Curve3; // Создаем кривые для графика
+        PointPairList points_Gr2 = new PointPairList();
+        PointPairList points_Gr3 = new PointPairList();
 
         //ввод только цифр и запятой 
-         void InputKey(object sender, KeyPressEventArgs e)
+        void InputKey(object sender, KeyPressEventArgs e)
         {
             //передача элемента управления 
             TextBox tb = (TextBox)sender;
@@ -259,7 +263,9 @@ namespace V1
         }
 
         private void buttonPost2_Click(object sender, EventArgs e)// вычисление зависимости T(х) с граничными условиями второго рода
-        {
+        { 
+            //чистка массива точек 
+            points_Gr2.Clear();
             //считывание информации из текстбоксов 
             // кол-во пространнственных узлов 
             int N = 6;
@@ -272,7 +278,7 @@ namespace V1
             try
             {
                 // считывание начальных данных
-                /*  ro = Convert.ToDouble(textBoxp.Text);
+                  ro = Convert.ToDouble(textBoxp.Text);
                   c = Convert.ToDouble(textBoxc.Text);
                   lamda = Convert.ToDouble(textBoxKOTE.Text);
                   L = Convert.ToDouble(textBoxL.Text);
@@ -282,7 +288,7 @@ namespace V1
 
                   if (textBoxq1.Text == "" && textBoxq2.Text == "")
                   {
-                      MessageBox.Show("Вы не ввели значения тепловых потоков. Поэтому q1=10^4,q2=10^3");
+                      MessageBox.Show("Вы не ввели значения тепловых потоков.  Поэтому q1=10000, q2=1000");
                       q1 = 10000.0;
                       q2 = 1000.0;
                   }
@@ -291,19 +297,10 @@ namespace V1
                       // считывание значений тепловых потоков 
                       q1 = Convert.ToDouble(textBoxq1.Text);
                       q2 = Convert.ToDouble(textBoxq2.Text);
-                  }*/
-                ro = 200;
-                lamda = 200;
-                c = 200;
-
-                L = 0.2;
-                tend = 3;
-                T0 = 12;
-                double time = 0.0;
-                q1 = 10000.0;
-                q2 = 1000.0;
+                  }
+               
                 // шаг 
-                double h = L / N;
+                double h = L / (N-1);
                 //коэффициент теплопроводности 
                 double a = lamda / (ro * c);
                 // шаг по времени
@@ -347,8 +344,42 @@ namespace V1
 
                 }
                 int k = 0;
-
-
+                //Настройка панели для построения графика
+                //Настройка осей
+                pane = zedGraphControl1.GraphPane;
+                zedGraphControl1.AutoSize = false;
+                pane.XAxis.Scale.MaxAuto = true;
+                pane.XAxis.Scale.MinAuto = true;
+                pane.YAxis.Scale.MaxAuto = true;
+                pane.YAxis.Scale.MinAuto = true;
+                //Установка масштаба 
+                pane.XAxis.Scale.Min = 0;
+                pane.XAxis.Scale.Max = L;
+                //Откуда идут проблемы
+                pane.XAxis.Scale.Format = "F2";
+                pane.XAxis.Scale.FontSpec.Size = 12;
+                pane.YAxis.Scale.FontSpec.Size = 12;
+                //Очищаем список кривых
+                pane.CurveList.Clear();
+                //Определяем заголовки
+                pane.Title.Text = "График зависимости T(x)";
+                pane.XAxis.Title.Text = pane.XAxis.Title.Text = "X, м";
+                pane.YAxis.Title.Text = pane.YAxis.Title.Text = "T, C";
+               // N = 0;
+                while (k<N-1)
+                {
+                    points_Gr2.Add(k*h, T[k]);
+                    k++;
+                }
+                points_Gr2.Add(L, T[k]);
+                /* for (int i = 0; i < N; i++)
+                 {
+                     points_Gr2.Add(i*h,T[i]);
+                 }*/
+                points_Gr2.TrimExcess();
+                pane.Title.Text = "Граничные условия второго рода";
+                Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
+                SetSize();
             }
 
             catch (FormatException )
@@ -362,5 +393,42 @@ namespace V1
             }
 
         }
+        public void SetSize()
+        {
+            // Включаем отображение сетки напротив крупных рисок по оси X
+            pane.XAxis.MajorGrid.IsVisible = true;
+            // Задаем вид пунктирной линии для крупных рисок по оси X:
+            // Длина штрихов равна 10 пикселям
+            pane.XAxis.MajorGrid.DashOn = 10;
+            // затем 5 пикселей - пропуск
+            pane.XAxis.MajorGrid.DashOff = 5;
+            // Включаем отображение сетки напротив крупных рисок по оси Y
+            pane.YAxis.MajorGrid.IsVisible = true;
+            // Аналогично задаем вид пунктирной линии для крупных рисок по оси Y
+            pane.YAxis.MajorGrid.DashOn = 10;
+            pane.YAxis.MajorGrid.DashOff = 5;
+            // Регулировка размера точки
+            Curve1.Symbol.Size = 3; // Размер точки
+            Curve1.Line.IsVisible = true;
+            Curve1.Line.Width = 3;
+            // Регулировка размера точки
+            /*  Curve2.Symbol.Size = 3; // Размер точки
+              Curve2.Line.IsVisible = true;
+              // Регулировка размера точки
+              Curve3.Symbol.Size = 4; // Размер точки
+              Curve3.Line.IsVisible = true;
+              Curve1.Line.Width = 3;
+              Curve2.Line.Width = 3;
+              Curve3.Line.Width = 3;*/
+            //pane.YAxis.Scale.Min = ymin;
+            //pane.YAxis.Scale.Max = ymax;
+            pane.YAxis.Scale.MaxAuto = true;
+            pane.YAxis.Scale.MinAuto = true;
+            pane.IsBoundedRanges = true;
+            zedGraphControl1.AxisChange();
+            zedGraphControl1.Refresh();
+            // zedGraphControl1.Invalidate();
+        }
+
     }
 }
