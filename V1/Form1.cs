@@ -173,7 +173,7 @@ namespace V1
                     textBoxk2.Visible = false;
                     textBoxT1.Visible = false;
                     textBoxT2.Visible = false;
-                    buttonPost3.Visible = false;
+                    
                     labelq1.Visible = false;
                     labelq2.Visible = false;
                     labelteplo.Visible = false;
@@ -214,7 +214,7 @@ namespace V1
                     textBoxk2.Visible = true;
                     textBoxT1.Visible = true;
                     textBoxT2.Visible = true;
-                    buttonPost3.Visible = true;
+                    buttonPost2.Visible = true;
 
                     labelq1.Visible = false;
                     labelq2.Visible = false;
@@ -275,7 +275,7 @@ namespace V1
             // время 
             double tend;
             // физические параметры объекта 
-            double lamda, ro, q1, q2, T0, c;
+            double lamda, ro, q1, q2, T0, c,T1,T2,k1,k2;
             //геометрические параметры объекта
             double L;
             try
@@ -401,32 +401,31 @@ namespace V1
                     points_Gr2.Add(L, T[k]);
 
                     points_Gr2.TrimExcess();
-                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий второго рода ";
+                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий 2-го рода ";
                     Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
                     SetSize();
                 }
 
-                if (checkBox3.Checked == true)
+                if (checkBox3.Checked == true) // граничные условия третьего рода 
                 {
                     points_Gr3.Clear();
-                    if (textBoxq1.Text == "" && textBoxq2.Text == "")
+
+                    if (textBoxk1.Text == "" && textBoxk2.Text == ""&& textBoxT2.Text == ""&&textBoxT1.Text == "")
                     {
-                        MessageBox.Show("Вы не ввели значения тепловых потоков.  Поэтому q1=10000, q2=1000");
-                        q1 = 10000.0;
-                        q2 = 1000.0;
+                        MessageBox.Show("Вы не ввелиграничные условия тертьего рода.  Поэтому T1=10, T2=12,  k1=1000, k2=500");
+                        T1 = 10.0;
+                        T2 = 12.0;
+                        k1 = 1000.0;
+                        k2 = 500.0;
                     }
                     else
                     {
                         // считывание значений тепловых потоков 
-                        q1 = Convert.ToDouble(textBoxq1.Text);
-                        q2 = Convert.ToDouble(textBoxq2.Text);
+                        k1 = Convert.ToDouble(textBoxk1.Text);
+                        k2 = Convert.ToDouble(textBoxk2.Text);
+                        T1 = Convert.ToDouble(textBoxT1.Text);
+                        T2 = Convert.ToDouble(textBoxT2.Text);
                     }
-
-
-
-
-                    
-
                     for (int i = 0; i < N; i++)
                     {
                         T[i] = T0;
@@ -435,8 +434,8 @@ namespace V1
                     {
                         // time = time + tau;
                         //расчёт коэффициентов с учётом левого граничного условия 
-                        alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
-                        beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
+                        alfa[0] = (2.0 * a * tau * lamda) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
+                        beta[0] = (h * h * T[0] * lamda + ((2.0 * a * tau * h * k1 * T1))) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
 
                         for (int i = 1; i < N; i++)
                         {
@@ -451,7 +450,7 @@ namespace V1
 
                         }
                         // определение значения температуры на правой границе 
-                        T[N - 1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N - 1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
+                        T[N - 1] = (lamda * h * h * T[N - 1] + 2.0 * a * tau * (lamda * beta[N - 2] + h * k2 * T2)) / (lamda * h * h + 2.0 * tau * (h * k2 + lamda * (1 - alfa[N - 2])));
                         // определяем неизвестные температуры 
                         for (int i = N - 2; i > -1; i--)
                         {
@@ -480,15 +479,22 @@ namespace V1
                     // N = 0;
                     while (k < N - 1)
                     {
-                        points_Gr2.Add(k * h, T[k]);
+                        points_Gr3.Add(k * h, T[k]);
                         k++;
                     }
-                    points_Gr2.Add(L, T[k]);
+                    points_Gr3.Add(L, T[k]);
 
-                    points_Gr2.TrimExcess();
-                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий второго рода ";
-                    Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
-                    SetSize();
+                    points_Gr3.TrimExcess();
+                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий 3-го рода ";
+                    Curve2 = pane.AddCurve("Т(х)", points_Gr3, Color.Blue, SymbolType.None);
+                    Curve2.Symbol.Size = 3; // Размер точки
+                    Curve2.Line.IsVisible = true;
+                    Curve2.Line.Width = 3;
+                    pane.YAxis.Scale.MaxAuto = true;
+                    pane.YAxis.Scale.MinAuto = true;
+                    pane.IsBoundedRanges = true;
+                    zedGraphControl1.AxisChange();
+                    zedGraphControl1.Refresh();
                 }
             }
 
