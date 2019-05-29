@@ -264,13 +264,14 @@ namespace V1
 
       
 
-        private void buttonPost2_Click(object sender, EventArgs e)// вычисление зависимости T(х) с граничными условиями второго рода
+        private void buttonPost2_Click(object sender, EventArgs e)// вычисление зависимости T(х) с граничными условиями
         { 
             //чистка массива точек 
             points_Gr2.Clear();
+            points_Gr3.Clear();
             //считывание информации из текстбоксов 
             // кол-во пространнственных узлов 
-            int N = 50;
+            int N = 100;
             // время 
             double tend;
             // физические параметры объекта 
@@ -289,22 +290,26 @@ namespace V1
                 double time = 0.0;
                 if (tend == 0)
                 {
-                    throw new Exception("Время конечное должно быть больше 1");
+                    throw new Exception("Конечное время должно быть больше 0");
+                }
+                if (L == 0)
+                {
+                    throw new Exception("Значение перменной L  должно быть больше 0");
+                }
+                if (L >100)
+                {
+                    throw new Exception("Значение перменной L  должно быть больше 100");
                 }
 
-                if (textBoxq1.Text == "" && textBoxq2.Text == "")
+                if (ro == 0 && c == 0 && lamda == 0 && T0 == 0)
                 {
-                    MessageBox.Show("Вы не ввели значения тепловых потоков.  Поэтому q1=10000, q2=1000");
-                    q1 = 10000.0;
-                    q2 = 1000.0;
-                }
-                else
-                {
-                    // считывание значений тепловых потоков 
-                    q1 = Convert.ToDouble(textBoxq1.Text);
-                    q2 = Convert.ToDouble(textBoxq2.Text);
-                }
+                    MessageBox.Show("Вы не ввели начальные условия.  Поэтому Плоность - 7800 кг/м^3, c=500 Дж/(кг*С), Начальная температура - 20 С, lamda=45,4 Вт/(м*С)");
+                    ro = 7800;
+                    c = 500;
+                    T0 = 20;
+                    lamda =45.4;
 
+                }
                 // шаг 
                 double h = L / (N - 1);
                 //коэффициент теплопроводности 
@@ -317,68 +322,174 @@ namespace V1
                 double[] beta = new double[N];
                 double ai, ci, bi, fi;
 
-                for (int i = 0; i < N; i++)
+                if (checkBox2.Checked == true)
                 {
-                    T[i] = T0;
-                }
-                while (tend >= time)
-                {
-                    // time = time + tau;
-                    //расчёт коэффициентов с учётом левого граничного условия 
-                    alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
-                    beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
 
-                    for (int i = 1; i < N; i++)
+
+                    points_Gr2.Clear();
+                    
+                    if (textBoxq1.Text == "" && textBoxq2.Text == "")
                     {
-                        // расчёт прогоночных коэфициентов 
-                        ai = lamda / (h * h);
-                        ci = lamda / (h * h);
-                        bi = 2.0 * lamda / (h * h) + ro * c / tau;
-                        fi = (-1.0) * ro * c * T[i] / tau;
-                        // прогоночные коэффициенты 
-                        alfa[i] = ai / (bi - ci * alfa[i - 1]);
-                        beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
+                        MessageBox.Show("Вы не ввели значения тепловых потоков.  Поэтому q1=10000, q2=1000");
+                        q1 = 10000.0;
+                        q2 = 1000.0;
+                    }
+                    else
+                    {
+                        // считывание значений тепловых потоков 
+                        q1 = Convert.ToDouble(textBoxq1.Text);
+                        q2 = Convert.ToDouble(textBoxq2.Text);
+                    }
+                                                                                      
+
+                    for (int i = 0; i < N; i++)
+                    {
+                        T[i] = T0;
+                    }
+                    while (tend >= time)
+                    {
+                        // time = time + tau;
+                        //расчёт коэффициентов с учётом левого граничного условия 
+                        alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
+                        beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
+
+                        for (int i = 1; i < N; i++)
+                        {
+                            // расчёт прогоночных коэфициентов 
+                            ai = lamda / (h * h);
+                            ci = lamda / (h * h);
+                            bi = 2.0 * lamda / (h * h) + ro * c / tau;
+                            fi = (-1.0) * ro * c * T[i] / tau;
+                            // прогоночные коэффициенты 
+                            alfa[i] = ai / (bi - ci * alfa[i - 1]);
+                            beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
+
+                        }
+                        // определение значения температуры на правой границе 
+                        T[N - 1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N - 1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
+                        // определяем неизвестные температуры 
+                        for (int i = N - 2; i > -1; i--)
+                        {
+                            T[i] = alfa[i] * T[i + 1] + beta[i];
+                        }
+                        time = time + tau;
 
                     }
-                    // определение значения температуры на правой границе 
-                    T[N - 1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N - 1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
-                    // определяем неизвестные температуры 
-                    for (int i = N - 2; i > -1; i--)
+                    int k = 0;
+                    //Настройка панели для построения графика
+                    //Настройка осей
+                    pane = zedGraphControl1.GraphPane;
+                    //Установка масштаба 
+                    pane.XAxis.Scale.Min = 0;
+                    pane.XAxis.Scale.Max = L;
+                    //Откуда идут проблемы
+                    pane.XAxis.Scale.Format = "F2";
+                    pane.XAxis.Scale.FontSpec.Size = 12;
+                    pane.YAxis.Scale.FontSpec.Size = 12;
+                    //Очищаем список кривых
+                    pane.CurveList.Clear();
+                    //Определяем заголовки
+                    pane.Title.Text = "График зависимости T(x)";
+                    pane.XAxis.Title.Text = pane.XAxis.Title.Text = "X, м";
+                    pane.YAxis.Title.Text = pane.YAxis.Title.Text = "T, C";
+                    // N = 0;
+                    while (k < N - 1)
                     {
-                        T[i] = alfa[i] * T[i + 1] + beta[i];
+                        points_Gr2.Add(k * h, T[k]);
+                        k++;
                     }
-                    time = time + tau;
+                    points_Gr2.Add(L, T[k]);
 
+                    points_Gr2.TrimExcess();
+                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий второго рода ";
+                    Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
+                    SetSize();
                 }
-                int k = 0;
-                //Настройка панели для построения графика
-                //Настройка осей
-                pane = zedGraphControl1.GraphPane;
-                //Установка масштаба 
-                pane.XAxis.Scale.Min = 0;
-                pane.XAxis.Scale.Max = L;
-                //Откуда идут проблемы
-                pane.XAxis.Scale.Format = "F2";
-                pane.XAxis.Scale.FontSpec.Size = 12;
-                pane.YAxis.Scale.FontSpec.Size = 12;
-                //Очищаем список кривых
-                pane.CurveList.Clear();
-                //Определяем заголовки
-                pane.Title.Text = "График зависимости T(x)";
-                pane.XAxis.Title.Text = pane.XAxis.Title.Text = "X, м";
-                pane.YAxis.Title.Text = pane.YAxis.Title.Text = "T, C";
-                // N = 0;
-                while (k < N - 1)
+
+                if (checkBox3.Checked == true)
                 {
-                    points_Gr2.Add(k * h, T[k]);
-                    k++;
-                }
-                points_Gr2.Add(L, T[k]);
+                    points_Gr3.Clear();
+                    if (textBoxq1.Text == "" && textBoxq2.Text == "")
+                    {
+                        MessageBox.Show("Вы не ввели значения тепловых потоков.  Поэтому q1=10000, q2=1000");
+                        q1 = 10000.0;
+                        q2 = 1000.0;
+                    }
+                    else
+                    {
+                        // считывание значений тепловых потоков 
+                        q1 = Convert.ToDouble(textBoxq1.Text);
+                        q2 = Convert.ToDouble(textBoxq2.Text);
+                    }
 
-                points_Gr2.TrimExcess();
-                pane.Title.Text = "Зависимость T(х)с учётом граничных условий второго рода ";
-                Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
-                SetSize();
+
+
+
+                    
+
+                    for (int i = 0; i < N; i++)
+                    {
+                        T[i] = T0;
+                    }
+                    while (tend >= time)
+                    {
+                        // time = time + tau;
+                        //расчёт коэффициентов с учётом левого граничного условия 
+                        alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
+                        beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
+
+                        for (int i = 1; i < N; i++)
+                        {
+                            // расчёт прогоночных коэфициентов 
+                            ai = lamda / (h * h);
+                            ci = lamda / (h * h);
+                            bi = 2.0 * lamda / (h * h) + ro * c / tau;
+                            fi = (-1.0) * ro * c * T[i] / tau;
+                            // прогоночные коэффициенты 
+                            alfa[i] = ai / (bi - ci * alfa[i - 1]);
+                            beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
+
+                        }
+                        // определение значения температуры на правой границе 
+                        T[N - 1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N - 1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
+                        // определяем неизвестные температуры 
+                        for (int i = N - 2; i > -1; i--)
+                        {
+                            T[i] = alfa[i] * T[i + 1] + beta[i];
+                        }
+                        time = time + tau;
+
+                    }
+                    int k = 0;
+                    //Настройка панели для построения графика
+                    //Настройка осей
+                    pane = zedGraphControl1.GraphPane;
+                    //Установка масштаба 
+                    pane.XAxis.Scale.Min = 0;
+                    pane.XAxis.Scale.Max = L;
+                    //Откуда идут проблемы
+                    pane.XAxis.Scale.Format = "F2";
+                    pane.XAxis.Scale.FontSpec.Size = 12;
+                    pane.YAxis.Scale.FontSpec.Size = 12;
+                    //Очищаем список кривых
+                    pane.CurveList.Clear();
+                    //Определяем заголовки
+                    pane.Title.Text = "График зависимости T(x)";
+                    pane.XAxis.Title.Text = pane.XAxis.Title.Text = "X, м";
+                    pane.YAxis.Title.Text = pane.YAxis.Title.Text = "T, C";
+                    // N = 0;
+                    while (k < N - 1)
+                    {
+                        points_Gr2.Add(k * h, T[k]);
+                        k++;
+                    }
+                    points_Gr2.Add(L, T[k]);
+
+                    points_Gr2.TrimExcess();
+                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий второго рода ";
+                    Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
+                    SetSize();
+                }
             }
 
             catch (FormatException)

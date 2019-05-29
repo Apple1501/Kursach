@@ -352,7 +352,7 @@
             // 
             // buttonPost2
             // 
-            this.buttonPost2.Location = new System.Drawing.Point(759, 227);
+            this.buttonPost2.Location = new System.Drawing.Point(759, 225);
             this.buttonPost2.Name = "buttonPost2";
             this.buttonPost2.Size = new System.Drawing.Size(203, 33);
             this.buttonPost2.TabIndex = 28;
