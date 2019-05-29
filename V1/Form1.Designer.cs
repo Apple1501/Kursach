@@ -58,7 +58,6 @@
             this.textBoxk1 = new System.Windows.Forms.TextBox();
             this.textBoxk2 = new System.Windows.Forms.TextBox();
             this.buttonPost2 = new System.Windows.Forms.Button();
-            this.buttonPost3 = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxKOTE = new System.Windows.Forms.TextBox();
@@ -361,13 +360,6 @@
             this.buttonPost2.Visible = false;
             this.buttonPost2.Click += new System.EventHandler(this.buttonPost2_Click);
             // 
-            // buttonPost3
-            // 
-            this.buttonPost3.Location = new System.Drawing.Point(0, 0);
-            this.buttonPost3.Name = "buttonPost3";
-            this.buttonPost3.Size = new System.Drawing.Size(75, 23);
-            this.buttonPost3.TabIndex = 35;
-            // 
             // zedGraphControl1
             // 
             this.zedGraphControl1.Location = new System.Drawing.Point(15, 337);
@@ -430,7 +422,6 @@
             this.Controls.Add(this.textBoxKOTE);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.zedGraphControl1);
-            this.Controls.Add(this.buttonPost3);
             this.Controls.Add(this.buttonPost2);
             this.Controls.Add(this.textBoxk2);
             this.Controls.Add(this.textBoxk1);
@@ -501,7 +492,6 @@
         private System.Windows.Forms.TextBox textBoxk1;
         private System.Windows.Forms.TextBox textBoxk2;
         private System.Windows.Forms.Button buttonPost2;
-        private System.Windows.Forms.Button buttonPost3;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxKOTE;

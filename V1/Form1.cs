@@ -151,7 +151,7 @@ namespace V1
                     textBoxk2.Visible = false;
                     textBoxT1.Visible = false;
                     textBoxT2.Visible = false;
-                    buttonPost3.Visible = false;
+                   
                     labelq1.Visible = false;
                     labelq2.Visible = false;
                     labelteplo.Visible = false;
@@ -174,6 +174,7 @@ namespace V1
                     textBoxT1.Visible = false;
                     textBoxT2.Visible = false;
                     
+
                     labelq1.Visible = false;
                     labelq2.Visible = false;
                     labelteplo.Visible = false;
@@ -194,6 +195,8 @@ namespace V1
 
                     labelT1.Visible = false;
                     labelT2.Visible = false;
+                    labelk1.Visible = false;
+                    labelk2.Visible = false;
                     labelK.Visible = false;
                     labelteplook.Visible = false;
                     textBoxk1.Visible = false;
@@ -208,6 +211,8 @@ namespace V1
 
                     labelT1.Visible = true;
                     labelT2.Visible = true;
+                    labelk1.Visible = true;
+                    labelk2.Visible = true;
                     labelK.Visible = true;
                     labelteplook.Visible = true;
                     textBoxk1.Visible = true;
@@ -303,13 +308,23 @@ namespace V1
 
                 if (ro == 0 && c == 0 && lamda == 0 && T0 == 0)
                 {
-                    MessageBox.Show("Вы не ввели начальные условия.  Поэтому Плоность - 7800 кг/м^3, c=500 Дж/(кг*С), Начальная температура - 20 С, lamda=45,4 Вт/(м*С)");
-                    ro = 7800;
-                    c = 500;
+                    MessageBox.Show("Вы не ввели начальные условия.  Поэтому Плоность - 8800 кг/м^3, c=381 Дж/(кг*С), Начальная температура - 20 С, lamda=384 Вт/(м*С)");
+                    ro = 8800;
+                    c = 381;
                     T0 = 20;
-                    lamda =45.4;
+                    lamda =384;
 
                 }
+                //Настройка панели для построения графика
+                //Настройка осей
+                pane = zedGraphControl1.GraphPane;
+                //Установка масштаба 
+                pane.XAxis.Scale.Min = 0;
+                pane.XAxis.Scale.Max = L;
+                //Откуда идут проблемы
+                pane.XAxis.Scale.Format = "F2";
+                pane.XAxis.Scale.FontSpec.Size = 12;
+                pane.YAxis.Scale.FontSpec.Size = 12;
                 // шаг 
                 double h = L / (N - 1);
                 //коэффициент теплопроводности 
@@ -376,23 +391,10 @@ namespace V1
 
                     }
                     int k = 0;
-                    //Настройка панели для построения графика
-                    //Настройка осей
-                    pane = zedGraphControl1.GraphPane;
-                    //Установка масштаба 
-                    pane.XAxis.Scale.Min = 0;
-                    pane.XAxis.Scale.Max = L;
-                    //Откуда идут проблемы
-                    pane.XAxis.Scale.Format = "F2";
-                    pane.XAxis.Scale.FontSpec.Size = 12;
-                    pane.YAxis.Scale.FontSpec.Size = 12;
+                   
                     //Очищаем список кривых
                     pane.CurveList.Clear();
-                    //Определяем заголовки
-                    pane.Title.Text = "График зависимости T(x)";
-                    pane.XAxis.Title.Text = pane.XAxis.Title.Text = "X, м";
-                    pane.YAxis.Title.Text = pane.YAxis.Title.Text = "T, C";
-                    // N = 0;
+                     // N = 0;
                     while (k < N - 1)
                     {
                         points_Gr2.Add(k * h, T[k]);
@@ -403,6 +405,9 @@ namespace V1
                     points_Gr2.TrimExcess();
                     pane.Title.Text = "Зависимость T(х)с учётом граничных условий 2-го рода ";
                     Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
+                    Curve1.Symbol.Size = 3; // Размер точки
+                    Curve1.Line.IsVisible = true;
+                    Curve1.Line.Width = 3;
                     SetSize();
                 }
 
@@ -450,7 +455,7 @@ namespace V1
 
                         }
                         // определение значения температуры на правой границе 
-                        T[N - 1] = (lamda * h * h * T[N - 1] + 2.0 * a * tau * (lamda * beta[N - 2] + h * k2 * T2)) / (lamda * h * h + 2.0 * tau * (h * k2 + lamda * (1 - alfa[N - 2])));
+                        T[N-1] = (lamda * h * h * T[N-1] + 2.0 * a * tau * (lamda * beta[N - 1] + h * k2 * T2)) / (lamda * h * h + 2.0 * tau * (h * k2 + lamda * (1 - alfa[N - 1])));
                         // определяем неизвестные температуры 
                         for (int i = N - 2; i > -1; i--)
                         {
@@ -460,29 +465,17 @@ namespace V1
 
                     }
                     int k = 0;
-                    //Настройка панели для построения графика
-                    //Настройка осей
-                    pane = zedGraphControl1.GraphPane;
-                    //Установка масштаба 
-                    pane.XAxis.Scale.Min = 0;
-                    pane.XAxis.Scale.Max = L;
-                    //Откуда идут проблемы
-                    pane.XAxis.Scale.Format = "F2";
-                    pane.XAxis.Scale.FontSpec.Size = 12;
-                    pane.YAxis.Scale.FontSpec.Size = 12;
-                    //Очищаем список кривых
+                   
                     pane.CurveList.Clear();
                     //Определяем заголовки
-                    pane.Title.Text = "График зависимости T(x)";
-                    pane.XAxis.Title.Text = pane.XAxis.Title.Text = "X, м";
-                    pane.YAxis.Title.Text = pane.YAxis.Title.Text = "T, C";
+                    
                     // N = 0;
                     while (k < N - 1)
                     {
                         points_Gr3.Add(k * h, T[k]);
                         k++;
                     }
-                    points_Gr3.Add(L, T[k]);
+                 //   points_Gr3.Add(L, T[k]);
 
                     points_Gr3.TrimExcess();
                     pane.Title.Text = "Зависимость T(х)с учётом граничных условий 3-го рода ";
@@ -490,11 +483,7 @@ namespace V1
                     Curve2.Symbol.Size = 3; // Размер точки
                     Curve2.Line.IsVisible = true;
                     Curve2.Line.Width = 3;
-                    pane.YAxis.Scale.MaxAuto = true;
-                    pane.YAxis.Scale.MinAuto = true;
-                    pane.IsBoundedRanges = true;
-                    zedGraphControl1.AxisChange();
-                    zedGraphControl1.Refresh();
+                    SetSize();
                 }
             }
 
@@ -527,20 +516,6 @@ namespace V1
             pane.YAxis.MajorGrid.DashOn = 10;
             pane.YAxis.MajorGrid.DashOff = 5;
             // Регулировка размера точки
-            Curve1.Symbol.Size = 3; // Размер точки
-            Curve1.Line.IsVisible = true;
-            Curve1.Line.Width = 3;
-            // Регулировка размера точки
-            /*  Curve2.Symbol.Size = 3; // Размер точки
-              Curve2.Line.IsVisible = true;
-              // Регулировка размера точки
-              Curve3.Symbol.Size = 4; // Размер точки
-              Curve3.Line.IsVisible = true;
-              Curve1.Line.Width = 3;
-              Curve2.Line.Width = 3;
-              Curve3.Line.Width = 3;*/
-            //pane.YAxis.Scale.Min = ymin;
-            //pane.YAxis.Scale.Max = ymax;
             pane.YAxis.Scale.MaxAuto = true;
             pane.YAxis.Scale.MinAuto = true;
             pane.IsBoundedRanges = true;
