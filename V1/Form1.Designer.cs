@@ -352,7 +352,7 @@
             // 
             // buttonPost2
             // 
-            this.buttonPost2.Location = new System.Drawing.Point(451, 217);
+            this.buttonPost2.Location = new System.Drawing.Point(759, 227);
             this.buttonPost2.Name = "buttonPost2";
             this.buttonPost2.Size = new System.Drawing.Size(203, 33);
             this.buttonPost2.TabIndex = 28;
@@ -363,13 +363,10 @@
             // 
             // buttonPost3
             // 
-            this.buttonPost3.Location = new System.Drawing.Point(679, 217);
+            this.buttonPost3.Location = new System.Drawing.Point(0, 0);
             this.buttonPost3.Name = "buttonPost3";
-            this.buttonPost3.Size = new System.Drawing.Size(636, 34);
-            this.buttonPost3.TabIndex = 29;
-            this.buttonPost3.Text = "Вычислить ";
-            this.buttonPost3.UseVisualStyleBackColor = true;
-            this.buttonPost3.Visible = false;
+            this.buttonPost3.Size = new System.Drawing.Size(75, 23);
+            this.buttonPost3.TabIndex = 35;
             // 
             // zedGraphControl1
             // 
