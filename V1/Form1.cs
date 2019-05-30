@@ -27,8 +27,8 @@ namespace V1
             textBoxq2.KeyPress += InputKey2;
             textBoxT2.KeyPress += InputKey2;
             textBoxT1.KeyPress += InputKey2;
-            textBoxk1.KeyPress += InputKey2;
-            textBoxk2.KeyPress += InputKey2;
+            textBoxk1.KeyPress += InputKey;
+            textBoxk2.KeyPress += InputKey;
             textBoxT0.KeyPress += InputKey2;
 
             textBoxc.TextChanged += TextChanged;
@@ -440,7 +440,7 @@ namespace V1
                         // time = time + tau;
                         //расчёт коэффициентов с учётом левого граничного условия 
                         alfa[0] = (2.0 * a * tau * lamda) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
-                        beta[0] = (h * h * T[0] * lamda + ((2.0 * a * tau * h * k1 * T1))) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
+                        beta[0] = (lamda * h * h * T[0] + 2.0 * a * tau * k1 * h * T1) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
 
                         for (int i = 1; i < N; i++)
                         {
@@ -455,8 +455,9 @@ namespace V1
 
                         }
                         // определение значения температуры на правой границе 
-                        T[N-1] = (lamda * h * h * T[N-1] + 2.0 * a * tau * (lamda * beta[N - 1] + h * k2 * T2)) / (lamda * h * h + 2.0 * tau * (h * k2 + lamda * (1 - alfa[N - 1])));
-                        // определяем неизвестные температуры 
+                       
+                        T[N - 1] = (lamda * h * h * T[N - 1] + 2.0 * a * tau * (lamda * beta[N - 1] + h * k2 * T2)) / (lamda * h * h + 2.0 * a * tau * (h * k2 + lamda * (1 - alfa[N - 1])));                        // определяем неизвестные температуры 
+
                         for (int i = N - 2; i > -1; i--)
                         {
                             T[i] = alfa[i] * T[i + 1] + beta[i];
@@ -475,7 +476,7 @@ namespace V1
                         points_Gr3.Add(k * h, T[k]);
                         k++;
                     }
-                 //   points_Gr3.Add(L, T[k]);
+                    points_Gr3.Add(L, T[k]);
 
                     points_Gr3.TrimExcess();
                     pane.Title.Text = "Зависимость T(х)с учётом граничных условий 3-го рода ";
