@@ -363,7 +363,7 @@
             // 
             // zedGraphControl1
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(15, 337);
+            this.zedGraphControl1.Location = new System.Drawing.Point(19, 325);
             this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
@@ -421,6 +421,7 @@
             this.buttonopen.TabIndex = 35;
             this.buttonopen.Text = "Посмотреть данные ";
             this.buttonopen.UseVisualStyleBackColor = true;
+            this.buttonopen.Visible = false;
             this.buttonopen.Click += new System.EventHandler(this.buttonopen_Click);
             // 
             // Form1

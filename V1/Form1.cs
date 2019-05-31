@@ -560,7 +560,7 @@ namespace V1
             pane.IsBoundedRanges = true;
             zedGraphControl1.AxisChange();
             zedGraphControl1.Refresh();
-            // zedGraphControl1.Invalidate();
+            
         }
 
     }
