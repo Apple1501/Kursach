@@ -63,6 +63,7 @@
             this.textBoxKOTE = new System.Windows.Forms.TextBox();
             this.labelT0 = new System.Windows.Forms.Label();
             this.textBoxT0 = new System.Windows.Forms.TextBox();
+            this.buttonopen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -355,7 +356,7 @@
             this.buttonPost2.Name = "buttonPost2";
             this.buttonPost2.Size = new System.Drawing.Size(203, 33);
             this.buttonPost2.TabIndex = 28;
-            this.buttonPost2.Text = "Вычислить ";
+            this.buttonPost2.Text = "Построить";
             this.buttonPost2.UseVisualStyleBackColor = true;
             this.buttonPost2.Visible = false;
             this.buttonPost2.Click += new System.EventHandler(this.buttonPost2_Click);
@@ -412,11 +413,22 @@
             this.textBoxT0.Size = new System.Drawing.Size(251, 28);
             this.textBoxT0.TabIndex = 34;
             // 
+            // buttonopen
+            // 
+            this.buttonopen.Location = new System.Drawing.Point(759, 276);
+            this.buttonopen.Name = "buttonopen";
+            this.buttonopen.Size = new System.Drawing.Size(202, 33);
+            this.buttonopen.TabIndex = 35;
+            this.buttonopen.Text = "Посмотреть данные ";
+            this.buttonopen.UseVisualStyleBackColor = true;
+            this.buttonopen.Click += new System.EventHandler(this.buttonopen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 838);
+            this.Controls.Add(this.buttonopen);
             this.Controls.Add(this.textBoxT0);
             this.Controls.Add(this.labelT0);
             this.Controls.Add(this.textBoxKOTE);
@@ -497,6 +509,7 @@
         private System.Windows.Forms.TextBox textBoxKOTE;
         private System.Windows.Forms.Label labelT0;
         private System.Windows.Forms.TextBox textBoxT0;
+        private System.Windows.Forms.Button buttonopen;
     }
 }
 

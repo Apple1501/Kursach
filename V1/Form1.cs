@@ -58,8 +58,9 @@ namespace V1
 
             
         }
+        string path_ = "..\\..\\output.txt";
         GraphPane pane; // Графическая панель
-        LineItem Curve1, Curve2, Curve3; // Создаем кривые для графика
+        LineItem Curve1, Curve2; // Создаем кривые для графика
         PointPairList points_Gr2 = new PointPairList();
         PointPairList points_Gr3 = new PointPairList();
 
@@ -139,7 +140,7 @@ namespace V1
         {
             try
             {
-                //проверка вводв ивда граничных условий 
+                //проверка ввода вида граничных условий 
 
                 if (checkBox2.Checked == false && checkBox3.Checked == false)
                 {
@@ -154,10 +155,13 @@ namespace V1
                    
                     labelq1.Visible = false;
                     labelq2.Visible = false;
+                    labelk1.Visible = false;
+                    labelk2.Visible = false;
                     labelteplo.Visible = false;
                     textBoxq1.Visible = false;
                     textBoxq2.Visible = false;
                     buttonPost2.Visible = false;
+                    buttonopen.Visible = false;
 
                     throw new ApplicationException("Выберите вид граничных условий!");
                                      
@@ -173,14 +177,16 @@ namespace V1
                     textBoxk2.Visible = false;
                     textBoxT1.Visible = false;
                     textBoxT2.Visible = false;
-                    
 
+                    labelk1.Visible = false;
+                    labelk2.Visible = false;
                     labelq1.Visible = false;
                     labelq2.Visible = false;
                     labelteplo.Visible = false;
                     textBoxq1.Visible = false;
                     textBoxq2.Visible = false;
                     buttonPost2.Visible = false;
+                    buttonopen.Visible = false;
                     throw new ApplicationException("Выберите только один вид граничных условий");
                 }
 
@@ -203,7 +209,8 @@ namespace V1
                     textBoxk2.Visible = false;
                     textBoxT1.Visible = false;
                     textBoxT2.Visible = false;
-                   
+                    buttonopen.Visible = true;
+
 
                 }
                 if (checkBox3.Checked == true) // Граничные условия третьего рода 
@@ -220,6 +227,7 @@ namespace V1
                     textBoxT1.Visible = true;
                     textBoxT2.Visible = true;
                     buttonPost2.Visible = true;
+                    buttonopen.Visible = true;
 
                     labelq1.Visible = false;
                     labelq2.Visible = false;
@@ -255,8 +263,8 @@ namespace V1
             // Обновляем график
             zedGraphControl1.Invalidate();
             //Подпись осей
-            pane.XAxis.Title.Text = "Ось X";
-            pane.YAxis.Title.Text = "Ось T";
+            pane.XAxis.Title.Text = "х, м";
+            pane.YAxis.Title.Text = "T, C";
             pane.Title.Text = "График зависимости T(x)";
             pane.XAxis.MajorGrid.IsVisible = true;
             pane.YAxis.MajorGrid.IsVisible = true;
@@ -277,7 +285,7 @@ namespace V1
             //считывание информации из текстбоксов 
             // кол-во пространнственных узлов 
             int N = 100;
-            // время 
+            // время конечное 
             double tend;
             // физические параметры объекта 
             double lamda, ro, q1, q2, T0, c,T1,T2,k1,k2;
@@ -321,7 +329,6 @@ namespace V1
                 //Установка масштаба 
                 pane.XAxis.Scale.Min = 0;
                 pane.XAxis.Scale.Max = L;
-                //Откуда идут проблемы
                 pane.XAxis.Scale.Format = "F2";
                 pane.XAxis.Scale.FontSpec.Size = 12;
                 pane.YAxis.Scale.FontSpec.Size = 12;
@@ -335,6 +342,7 @@ namespace V1
                 double[] T = new double[N];
                 double[] alfa = new double[N];
                 double[] beta = new double[N];
+
                 double ai, ci, bi, fi;
 
                 if (checkBox2.Checked == true)
@@ -354,8 +362,7 @@ namespace V1
                         // считывание значений тепловых потоков 
                         q1 = Convert.ToDouble(textBoxq1.Text);
                         q2 = Convert.ToDouble(textBoxq2.Text);
-                    }
-                                                                                      
+                    }                                                               
 
                     for (int i = 0; i < N; i++)
                     {
@@ -363,25 +370,27 @@ namespace V1
                     }
                     while (tend >= time)
                     {
-                        // time = time + tau;
+                        
                         //расчёт коэффициентов с учётом левого граничного условия 
                         alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
                         beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
 
-                        for (int i = 1; i < N; i++)
+                         for (int i = 1; i < N; i++)
                         {
                             // расчёт прогоночных коэфициентов 
                             ai = lamda / (h * h);
                             ci = lamda / (h * h);
                             bi = 2.0 * lamda / (h * h) + ro * c / tau;
                             fi = (-1.0) * ro * c * T[i] / tau;
+
                             // прогоночные коэффициенты 
                             alfa[i] = ai / (bi - ci * alfa[i - 1]);
                             beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
 
                         }
-                        // определение значения температуры на правой границе 
+                        // определение значения температуры на правой границе с учётом правых граничных условий 
                         T[N - 1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N - 1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
+                       
                         // определяем неизвестные температуры 
                         for (int i = N - 2; i > -1; i--)
                         {
@@ -390,6 +399,13 @@ namespace V1
                         time = time + tau;
 
                     }
+                    // Запись в файл:
+                    StreamWriter SW_ = new StreamWriter(path_);
+                 
+                   
+                        SW_.WriteLine("время процесса =" + " " + tend+""+"c");
+                        SW_.WriteLine("L, м" + " " + "T, C");
+
                     int k = 0;
                    
                     //Очищаем список кривых
@@ -398,9 +414,13 @@ namespace V1
                     while (k < N - 1)
                     {
                         points_Gr2.Add(k * h, T[k]);
+                        SW_.WriteLine(k*h + " " + T[k]);
                         k++;
                     }
                     points_Gr2.Add(L, T[k]);
+                    SW_.WriteLine(L + " " + T[k]);
+                    //закрытие файла
+                    SW_.Close();
 
                     points_Gr2.TrimExcess();
                     pane.Title.Text = "Зависимость T(х)с учётом граничных условий 2-го рода ";
@@ -417,7 +437,7 @@ namespace V1
 
                     if (textBoxk1.Text == "" && textBoxk2.Text == ""&& textBoxT2.Text == ""&&textBoxT1.Text == "")
                     {
-                        MessageBox.Show("Вы не ввелиграничные условия тертьего рода.  Поэтому T1=10, T2=12,  k1=1000, k2=500");
+                        MessageBox.Show("Вы не ввели граничные условия тертьего рода.  Поэтому T1=10, T2=12,  k1=1000, k2=500");
                         T1 = 10.0;
                         T2 = 12.0;
                         k1 = 1000.0;
@@ -469,14 +489,26 @@ namespace V1
                    
                     pane.CurveList.Clear();
                     //Определяем заголовки
-                    
+                    // Запись в файл:
+                    StreamWriter SW_ = new StreamWriter(path_);
+
+
+                    SW_.WriteLine("время процесса =" + " " + tend + "" + "c");
+                    SW_.WriteLine("L, м" + " " + "T, C");
+
+                     //Очищаем список кривых
+                    pane.CurveList.Clear();
                     // N = 0;
                     while (k < N - 1)
                     {
                         points_Gr3.Add(k * h, T[k]);
+                        SW_.WriteLine(k * h + " " + T[k]);
                         k++;
                     }
                     points_Gr3.Add(L, T[k]);
+                    SW_.WriteLine(L + " " + T[k]);
+                    //закрытие файла
+                    SW_.Close();
 
                     points_Gr3.TrimExcess();
                     pane.Title.Text = "Зависимость T(х)с учётом граничных условий 3-го рода ";
@@ -502,6 +534,12 @@ namespace V1
                 MessageBox.Show(mes.Message);
             }
         }
+        // показать полученные данные 
+        private void buttonopen_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("D:\\0\\Доки\\Вычи.мат\\Курсовая\\V1\\V1\\output.txt");
+        }
+
         public void SetSize()
         {
             // Включаем отображение сетки напротив крупных рисок по оси X
