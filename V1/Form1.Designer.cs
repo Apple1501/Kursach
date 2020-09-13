@@ -29,48 +29,48 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxp = new System.Windows.Forms.TextBox();
-            this.textBoxc = new System.Windows.Forms.TextBox();
-            this.textBoxL = new System.Windows.Forms.TextBox();
-            this.textBoxt = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxUa = new System.Windows.Forms.TextBox();
+            this.textBoxf = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.buttonvv = new System.Windows.Forms.Button();
-            this.labelteplo = new System.Windows.Forms.Label();
-            this.labelq1 = new System.Windows.Forms.Label();
-            this.labelq2 = new System.Windows.Forms.Label();
-            this.textBoxq1 = new System.Windows.Forms.TextBox();
-            this.textBoxq2 = new System.Windows.Forms.TextBox();
-            this.labelteplook = new System.Windows.Forms.Label();
-            this.labelT1 = new System.Windows.Forms.Label();
-            this.labelT2 = new System.Windows.Forms.Label();
-            this.textBoxT1 = new System.Windows.Forms.TextBox();
-            this.textBoxT2 = new System.Windows.Forms.TextBox();
-            this.labelK = new System.Windows.Forms.Label();
-            this.labelk1 = new System.Windows.Forms.Label();
-            this.labelk2 = new System.Windows.Forms.Label();
-            this.textBoxk1 = new System.Windows.Forms.TextBox();
-            this.textBoxk2 = new System.Windows.Forms.TextBox();
-            this.buttonPost2 = new System.Windows.Forms.Button();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.Zone = new ZedGraph.ZedGraphControl();
+            this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxKOTE = new System.Windows.Forms.TextBox();
-            this.labelT0 = new System.Windows.Forms.Label();
-            this.textBoxT0 = new System.Windows.Forms.TextBox();
-            this.buttonopen = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxt = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxC1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxR2 = new System.Windows.Forms.TextBox();
+            this.textBoxR1 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxC2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxL2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBoxL1 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxM = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(158, 1);
+            this.label1.Location = new System.Drawing.Point(265, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 28);
@@ -81,386 +81,337 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(28, 64);
+            this.label2.Location = new System.Drawing.Point(13, 234);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 21);
+            this.label2.Size = new System.Drawing.Size(71, 21);
             this.label2.TabIndex = 1;
-            this.label2.Text = "p(кг/м^3) =";
+            this.label2.Text = "Ua(B) =";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(11, 102);
+            this.label3.Location = new System.Drawing.Point(17, 292);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 21);
+            this.label3.Size = new System.Drawing.Size(65, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "c(Дж/кг*С) =";
+            this.label3.Text = "f(Гц) =";
             // 
-            // label4
+            // textBoxUa
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(65, 208);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 21);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "L(м) =";
+            this.textBoxUa.Location = new System.Drawing.Point(83, 231);
+            this.textBoxUa.Name = "textBoxUa";
+            this.textBoxUa.Size = new System.Drawing.Size(251, 28);
+            this.textBoxUa.TabIndex = 5;
+            this.textBoxUa.TextChanged += new System.EventHandler(this.TextChanged);
+            this.textBoxUa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputKey);
+            this.textBoxUa.MouseEnter += new System.EventHandler(this.MouseEnter);
             // 
-            // label5
+            // textBoxf
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(73, 249);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 21);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "t(c) =";
-            // 
-            // textBoxp
-            // 
-            this.textBoxp.Location = new System.Drawing.Point(134, 60);
-            this.textBoxp.Name = "textBoxp";
-            this.textBoxp.Size = new System.Drawing.Size(251, 28);
-            this.textBoxp.TabIndex = 5;
-            this.textBoxp.TextChanged += new System.EventHandler(this.TextChanged);
-            this.textBoxp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputKey);
-            this.textBoxp.MouseEnter += new System.EventHandler(this.MouseEnter);
-            // 
-            // textBoxc
-            // 
-            this.textBoxc.Location = new System.Drawing.Point(134, 102);
-            this.textBoxc.Name = "textBoxc";
-            this.textBoxc.Size = new System.Drawing.Size(250, 28);
-            this.textBoxc.TabIndex = 6;
-            // 
-            // textBoxL
-            // 
-            this.textBoxL.Location = new System.Drawing.Point(134, 203);
-            this.textBoxL.Name = "textBoxL";
-            this.textBoxL.Size = new System.Drawing.Size(250, 28);
-            this.textBoxL.TabIndex = 7;
-            // 
-            // textBoxt
-            // 
-            this.textBoxt.Location = new System.Drawing.Point(134, 246);
-            this.textBoxt.Name = "textBoxt";
-            this.textBoxt.Size = new System.Drawing.Size(251, 28);
-            this.textBoxt.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(754, 1);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(224, 28);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Граничные условия ";
+            this.textBoxf.Location = new System.Drawing.Point(81, 292);
+            this.textBoxf.Name = "textBoxf";
+            this.textBoxf.Size = new System.Drawing.Size(250, 28);
+            this.textBoxf.TabIndex = 6;
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(509, 39);
+            this.checkBox2.Location = new System.Drawing.Point(21, 504);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(83, 25);
+            this.checkBox2.Size = new System.Drawing.Size(303, 25);
             this.checkBox2.TabIndex = 10;
-            this.checkBox2.Text = "2 рода";
+            this.checkBox2.Text = "Неопределённых коэффициентов ";
             this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(1121, 39);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(83, 25);
-            this.checkBox3.TabIndex = 11;
-            this.checkBox3.Text = "3 рода";
-            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // buttonvv
             // 
-            this.buttonvv.Location = new System.Drawing.Point(679, 64);
+            this.buttonvv.Location = new System.Drawing.Point(17, 589);
             this.buttonvv.Name = "buttonvv";
-            this.buttonvv.Size = new System.Drawing.Size(351, 35);
+            this.buttonvv.Size = new System.Drawing.Size(666, 40);
             this.buttonvv.TabIndex = 12;
-            this.buttonvv.Text = "Ввести граничные условия ";
+            this.buttonvv.Text = "Рассчитать";
             this.buttonvv.UseVisualStyleBackColor = true;
             this.buttonvv.Click += new System.EventHandler(this.buttonvv_Click);
             // 
-            // labelteplo
+            // Zone
             // 
-            this.labelteplo.AutoSize = true;
-            this.labelteplo.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelteplo.Location = new System.Drawing.Point(477, 104);
-            this.labelteplo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelteplo.Name = "labelteplo";
-            this.labelteplo.Size = new System.Drawing.Size(166, 23);
-            this.labelteplo.TabIndex = 13;
-            this.labelteplo.Text = "Тепловые потоки";
-            this.labelteplo.Visible = false;
+            this.Zone.Location = new System.Drawing.Point(692, 14);
+            this.Zone.Margin = new System.Windows.Forms.Padding(5);
+            this.Zone.Name = "Zone";
+            this.Zone.ScrollGrace = 0D;
+            this.Zone.ScrollMaxX = 0D;
+            this.Zone.ScrollMaxY = 0D;
+            this.Zone.ScrollMaxY2 = 0D;
+            this.Zone.ScrollMinX = 0D;
+            this.Zone.ScrollMinY = 0D;
+            this.Zone.ScrollMinY2 = 0D;
+            this.Zone.Size = new System.Drawing.Size(772, 615);
+            this.Zone.TabIndex = 30;
+            this.Zone.UseExtendedPrintDialog = true;
             // 
-            // labelq1
+            // label5
             // 
-            this.labelq1.AutoSize = true;
-            this.labelq1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelq1.Location = new System.Drawing.Point(408, 139);
-            this.labelq1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelq1.Name = "labelq1";
-            this.labelq1.Size = new System.Drawing.Size(45, 21);
-            this.labelq1.TabIndex = 14;
-            this.labelq1.Text = "q1 =";
-            this.labelq1.Visible = false;
-            // 
-            // labelq2
-            // 
-            this.labelq2.AutoSize = true;
-            this.labelq2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelq2.Location = new System.Drawing.Point(408, 178);
-            this.labelq2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelq2.Name = "labelq2";
-            this.labelq2.Size = new System.Drawing.Size(45, 21);
-            this.labelq2.TabIndex = 15;
-            this.labelq2.Text = "q2 =";
-            this.labelq2.Visible = false;
-            // 
-            // textBoxq1
-            // 
-            this.textBoxq1.Location = new System.Drawing.Point(452, 136);
-            this.textBoxq1.Name = "textBoxq1";
-            this.textBoxq1.Size = new System.Drawing.Size(202, 28);
-            this.textBoxq1.TabIndex = 16;
-            this.textBoxq1.Visible = false;
-            this.textBoxq1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputKey2);
-            // 
-            // textBoxq2
-            // 
-            this.textBoxq2.Location = new System.Drawing.Point(451, 174);
-            this.textBoxq2.Name = "textBoxq2";
-            this.textBoxq2.Size = new System.Drawing.Size(203, 28);
-            this.textBoxq2.TabIndex = 17;
-            this.textBoxq2.Visible = false;
-            // 
-            // labelteplook
-            // 
-            this.labelteplook.AutoSize = true;
-            this.labelteplook.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelteplook.Location = new System.Drawing.Point(770, 107);
-            this.labelteplook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelteplook.Name = "labelteplook";
-            this.labelteplook.Size = new System.Drawing.Size(260, 23);
-            this.labelteplook.TabIndex = 18;
-            this.labelteplook.Text = "Темпер. окружающей среды";
-            this.labelteplook.Visible = false;
-            // 
-            // labelT1
-            // 
-            this.labelT1.AutoSize = true;
-            this.labelT1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelT1.Location = new System.Drawing.Point(674, 136);
-            this.labelT1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelT1.Name = "labelT1";
-            this.labelT1.Size = new System.Drawing.Size(47, 21);
-            this.labelT1.TabIndex = 19;
-            this.labelT1.Text = "T1 =";
-            this.labelT1.Visible = false;
-            // 
-            // labelT2
-            // 
-            this.labelT2.AutoSize = true;
-            this.labelT2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelT2.Location = new System.Drawing.Point(674, 171);
-            this.labelT2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelT2.Name = "labelT2";
-            this.labelT2.Size = new System.Drawing.Size(47, 21);
-            this.labelT2.TabIndex = 20;
-            this.labelT2.Text = "T2 =";
-            this.labelT2.Visible = false;
-            // 
-            // textBoxT1
-            // 
-            this.textBoxT1.Location = new System.Drawing.Point(728, 132);
-            this.textBoxT1.Name = "textBoxT1";
-            this.textBoxT1.Size = new System.Drawing.Size(265, 28);
-            this.textBoxT1.TabIndex = 21;
-            this.textBoxT1.Visible = false;
-            // 
-            // textBoxT2
-            // 
-            this.textBoxT2.Location = new System.Drawing.Point(729, 168);
-            this.textBoxT2.Name = "textBoxT2";
-            this.textBoxT2.Size = new System.Drawing.Size(263, 28);
-            this.textBoxT2.TabIndex = 22;
-            this.textBoxT2.Visible = false;
-            // 
-            // labelK
-            // 
-            this.labelK.AutoSize = true;
-            this.labelK.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelK.Location = new System.Drawing.Point(1061, 107);
-            this.labelK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelK.Name = "labelK";
-            this.labelK.Size = new System.Drawing.Size(286, 23);
-            this.labelK.TabIndex = 23;
-            this.labelK.Text = "Коэффициенты теплоотдачи ";
-            this.labelK.Visible = false;
-            // 
-            // labelk1
-            // 
-            this.labelk1.AutoSize = true;
-            this.labelk1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelk1.Location = new System.Drawing.Point(1005, 139);
-            this.labelk1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelk1.Name = "labelk1";
-            this.labelk1.Size = new System.Drawing.Size(44, 21);
-            this.labelk1.TabIndex = 24;
-            this.labelk1.Text = "k1 =";
-            this.labelk1.Visible = false;
-            // 
-            // labelk2
-            // 
-            this.labelk2.AutoSize = true;
-            this.labelk2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelk2.Location = new System.Drawing.Point(1004, 174);
-            this.labelk2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelk2.Name = "labelk2";
-            this.labelk2.Size = new System.Drawing.Size(44, 21);
-            this.labelk2.TabIndex = 25;
-            this.labelk2.Text = "k2 =";
-            this.labelk2.Visible = false;
-            // 
-            // textBoxk1
-            // 
-            this.textBoxk1.Location = new System.Drawing.Point(1056, 132);
-            this.textBoxk1.Name = "textBoxk1";
-            this.textBoxk1.Size = new System.Drawing.Size(259, 28);
-            this.textBoxk1.TabIndex = 26;
-            this.textBoxk1.Visible = false;
-            // 
-            // textBoxk2
-            // 
-            this.textBoxk2.Location = new System.Drawing.Point(1056, 171);
-            this.textBoxk2.Name = "textBoxk2";
-            this.textBoxk2.Size = new System.Drawing.Size(259, 28);
-            this.textBoxk2.TabIndex = 27;
-            this.textBoxk2.Visible = false;
-            // 
-            // buttonPost2
-            // 
-            this.buttonPost2.Location = new System.Drawing.Point(759, 225);
-            this.buttonPost2.Name = "buttonPost2";
-            this.buttonPost2.Size = new System.Drawing.Size(203, 33);
-            this.buttonPost2.TabIndex = 28;
-            this.buttonPost2.Text = "Построить";
-            this.buttonPost2.UseVisualStyleBackColor = true;
-            this.buttonPost2.Visible = false;
-            this.buttonPost2.Click += new System.EventHandler(this.buttonPost2_Click);
-            // 
-            // zedGraphControl1
-            // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(19, 325);
-            this.zedGraphControl1.Margin = new System.Windows.Forms.Padding(5);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(1300, 487);
-            this.zedGraphControl1.TabIndex = 30;
-            this.zedGraphControl1.UseExtendedPrintDialog = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(90, 207);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(244, 21);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Амплитуда входного сигнала";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(42, 129);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(97, 264);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 63);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Коэф-т \r\nтепл-ти =\r\n(Вт/м*С)\r\n";
+            this.label7.Size = new System.Drawing.Size(219, 21);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Частота входного сигнала";
             // 
-            // textBoxKOTE
+            // label6
             // 
-            this.textBoxKOTE.Location = new System.Drawing.Point(134, 149);
-            this.textBoxKOTE.Name = "textBoxKOTE";
-            this.textBoxKOTE.Size = new System.Drawing.Size(250, 28);
-            this.textBoxKOTE.TabIndex = 32;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(141, 453);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 21);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Метод решения ";
             // 
-            // labelT0
+            // label4
             // 
-            this.labelT0.AutoSize = true;
-            this.labelT0.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelT0.Location = new System.Drawing.Point(54, 289);
-            this.labelT0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelT0.Name = "labelT0";
-            this.labelT0.Size = new System.Drawing.Size(72, 21);
-            this.labelT0.TabIndex = 33;
-            this.labelT0.Text = "T0(C) =";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(171, 323);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 21);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Время ";
             // 
-            // textBoxT0
+            // label8
             // 
-            this.textBoxT0.Location = new System.Drawing.Point(134, 289);
-            this.textBoxT0.Name = "textBoxT0";
-            this.textBoxT0.Size = new System.Drawing.Size(251, 28);
-            this.textBoxT0.TabIndex = 34;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(22, 350);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 21);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "t(c) =";
             // 
-            // buttonopen
+            // textBoxt
             // 
-            this.buttonopen.Location = new System.Drawing.Point(759, 276);
-            this.buttonopen.Name = "buttonopen";
-            this.buttonopen.Size = new System.Drawing.Size(202, 33);
-            this.buttonopen.TabIndex = 35;
-            this.buttonopen.Text = "Посмотреть данные ";
-            this.buttonopen.UseVisualStyleBackColor = true;
-            this.buttonopen.Visible = false;
-            this.buttonopen.Click += new System.EventHandler(this.buttonopen_Click);
+            this.textBoxt.Location = new System.Drawing.Point(81, 347);
+            this.textBoxt.Name = "textBoxt";
+            this.textBoxt.Size = new System.Drawing.Size(250, 28);
+            this.textBoxt.TabIndex = 37;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(101, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(495, 159);
+            this.pictureBox1.TabIndex = 39;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(533, 323);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 21);
+            this.label9.TabIndex = 48;
+            this.label9.Text = "Ёмкости";
+            // 
+            // textBoxC1
+            // 
+            this.textBoxC1.Location = new System.Drawing.Point(433, 350);
+            this.textBoxC1.Name = "textBoxC1";
+            this.textBoxC1.Size = new System.Drawing.Size(250, 28);
+            this.textBoxC1.TabIndex = 47;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(341, 353);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 21);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "С1(мкФ) =";
+            // 
+            // textBoxR2
+            // 
+            this.textBoxR2.Location = new System.Drawing.Point(433, 292);
+            this.textBoxR2.Name = "textBoxR2";
+            this.textBoxR2.Size = new System.Drawing.Size(250, 28);
+            this.textBoxR2.TabIndex = 43;
+            // 
+            // textBoxR1
+            // 
+            this.textBoxR1.Location = new System.Drawing.Point(433, 234);
+            this.textBoxR1.Name = "textBoxR1";
+            this.textBoxR1.Size = new System.Drawing.Size(251, 28);
+            this.textBoxR1.TabIndex = 42;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(352, 292);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 21);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "R2(Oм) =";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(352, 238);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(86, 21);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "R1(Oм) =";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(505, 207);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(136, 21);
+            this.label11.TabIndex = 49;
+            this.label11.Text = "Сопротивления";
+            // 
+            // textBoxC2
+            // 
+            this.textBoxC2.Location = new System.Drawing.Point(433, 409);
+            this.textBoxC2.Name = "textBoxC2";
+            this.textBoxC2.Size = new System.Drawing.Size(250, 28);
+            this.textBoxC2.TabIndex = 52;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(341, 412);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 21);
+            this.label15.TabIndex = 51;
+            this.label15.Text = "С2(мкФ) =";
+            // 
+            // textBoxL2
+            // 
+            this.textBoxL2.Location = new System.Drawing.Point(433, 540);
+            this.textBoxL2.Name = "textBoxL2";
+            this.textBoxL2.Size = new System.Drawing.Size(250, 28);
+            this.textBoxL2.TabIndex = 57;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(358, 543);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 21);
+            this.label12.TabIndex = 56;
+            this.label12.Text = "L2(Гн) =";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(506, 453);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(135, 21);
+            this.label16.TabIndex = 55;
+            this.label16.Text = "Индуктивности";
+            // 
+            // textBoxL1
+            // 
+            this.textBoxL1.Location = new System.Drawing.Point(433, 489);
+            this.textBoxL1.Name = "textBoxL1";
+            this.textBoxL1.Size = new System.Drawing.Size(250, 28);
+            this.textBoxL1.TabIndex = 54;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(358, 492);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 21);
+            this.label17.TabIndex = 53;
+            this.label17.Text = "L1(Гн) =";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(134, 379);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(147, 21);
+            this.label18.TabIndex = 60;
+            this.label18.Text = "Взаимоиндукция";
+            // 
+            // textBoxM
+            // 
+            this.textBoxM.Location = new System.Drawing.Point(81, 409);
+            this.textBoxM.Name = "textBoxM";
+            this.textBoxM.Size = new System.Drawing.Size(250, 28);
+            this.textBoxM.TabIndex = 59;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(32, 412);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(42, 21);
+            this.label19.TabIndex = 58;
+            this.label19.Text = "M =";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1333, 838);
-            this.Controls.Add(this.buttonopen);
-            this.Controls.Add(this.textBoxT0);
-            this.Controls.Add(this.labelT0);
-            this.Controls.Add(this.textBoxKOTE);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.zedGraphControl1);
-            this.Controls.Add(this.buttonPost2);
-            this.Controls.Add(this.textBoxk2);
-            this.Controls.Add(this.textBoxk1);
-            this.Controls.Add(this.labelk2);
-            this.Controls.Add(this.labelk1);
-            this.Controls.Add(this.labelK);
-            this.Controls.Add(this.textBoxT2);
-            this.Controls.Add(this.textBoxT1);
-            this.Controls.Add(this.labelT2);
-            this.Controls.Add(this.labelT1);
-            this.Controls.Add(this.labelteplook);
-            this.Controls.Add(this.textBoxq2);
-            this.Controls.Add(this.textBoxq1);
-            this.Controls.Add(this.labelq2);
-            this.Controls.Add(this.labelq1);
-            this.Controls.Add(this.labelteplo);
-            this.Controls.Add(this.buttonvv);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxt);
-            this.Controls.Add(this.textBoxL);
-            this.Controls.Add(this.textBoxc);
-            this.Controls.Add(this.textBoxp);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(1477, 650);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.textBoxM);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.textBoxL2);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.textBoxL1);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.textBoxC2);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBoxC1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBoxR2);
+            this.Controls.Add(this.textBoxR1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxt);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Zone);
+            this.Controls.Add(this.buttonvv);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.textBoxf);
+            this.Controls.Add(this.textBoxUa);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -468,7 +419,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Курсовая работа ";
+            this.Text = "решение дифференциальных уравнений";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,38 +431,36 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxp;
-        private System.Windows.Forms.TextBox textBoxc;
-        private System.Windows.Forms.TextBox textBoxL;
-        private System.Windows.Forms.TextBox textBoxt;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxUa;
+        private System.Windows.Forms.TextBox textBoxf;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button buttonvv;
-        private System.Windows.Forms.Label labelteplo;
-        private System.Windows.Forms.Label labelq1;
-        private System.Windows.Forms.Label labelq2;
-        private System.Windows.Forms.TextBox textBoxq1;
-        private System.Windows.Forms.TextBox textBoxq2;
-        private System.Windows.Forms.Label labelteplook;
-        private System.Windows.Forms.Label labelT1;
-        private System.Windows.Forms.Label labelT2;
-        private System.Windows.Forms.TextBox textBoxT1;
-        private System.Windows.Forms.TextBox textBoxT2;
-        private System.Windows.Forms.Label labelK;
-        private System.Windows.Forms.Label labelk1;
-        private System.Windows.Forms.Label labelk2;
-        private System.Windows.Forms.TextBox textBoxk1;
-        private System.Windows.Forms.TextBox textBoxk2;
-        private System.Windows.Forms.Button buttonPost2;
-        private ZedGraph.ZedGraphControl zedGraphControl1;
+        private ZedGraph.ZedGraphControl Zone;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxKOTE;
-        private System.Windows.Forms.Label labelT0;
-        private System.Windows.Forms.TextBox textBoxT0;
-        private System.Windows.Forms.Button buttonopen;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxt;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxC1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxR2;
+        private System.Windows.Forms.TextBox textBoxR1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxC2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxL2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxL1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxM;
+        private System.Windows.Forms.Label label19;
     }
 }
 

@@ -20,47 +20,43 @@ namespace V1
             PaneSettings();
           
             // Подпись текстбоксов на событие 
-            textBoxc.KeyPress += InputKey;
-            textBoxL.KeyPress += InputKey;
+            textBoxf.KeyPress += InputKey;
+            textBoxUa.KeyPress += InputKey;
             textBoxt.KeyPress += InputKey;
-            textBoxKOTE.KeyPress += InputKey;
-            textBoxq2.KeyPress += InputKey2;
-            textBoxT2.KeyPress += InputKey2;
-            textBoxT1.KeyPress += InputKey2;
-            textBoxk1.KeyPress += InputKey;
-            textBoxk2.KeyPress += InputKey;
-            textBoxT0.KeyPress += InputKey2;
+            textBoxM.KeyPress += InputKey;
+            textBoxL1.KeyPress += InputKey;
+            textBoxL2.KeyPress += InputKey;
+            textBoxC1.KeyPress += InputKey;
+            textBoxC2.KeyPress += InputKey;
+            textBoxR1.KeyPress += InputKey;
+            textBoxR2.KeyPress += InputKey;
 
-            textBoxc.TextChanged += TextChanged;
-            textBoxL.TextChanged += TextChanged;
+            textBoxf.TextChanged += TextChanged;
+            textBoxUa.TextChanged += TextChanged;
             textBoxt.TextChanged += TextChanged;
-            textBoxT1.TextChanged += TextChanged;
-            textBoxq2.TextChanged += TextChanged;
-            textBoxq1.TextChanged += TextChanged;
-            textBoxT2.TextChanged += TextChanged;
-            textBoxk1.TextChanged += TextChanged;
-            textBoxk2.TextChanged += TextChanged;
-            textBoxKOTE.TextChanged += TextChanged;
-            textBoxT0.TextChanged += TextChanged;
+            textBoxM.TextChanged += TextChanged;
+            textBoxL1.TextChanged += TextChanged;
+            textBoxL2.TextChanged += TextChanged;
+            textBoxR1.TextChanged += TextChanged;
+            textBoxR2.TextChanged += TextChanged;
+            textBoxC1.TextChanged += TextChanged;
+            textBoxC2.TextChanged += TextChanged;
 
-            textBoxc.MouseEnter += MouseEnter;
-            textBoxL.MouseEnter += MouseEnter;
+            textBoxf.MouseEnter += MouseEnter;
+            textBoxUa.MouseEnter += MouseEnter;
             textBoxt.MouseEnter += MouseEnter;
-            textBoxT1.MouseEnter += MouseEnter;
-            textBoxq1.MouseEnter += MouseEnter;
-            textBoxq2.MouseEnter += MouseEnter;
-            textBoxk1.MouseEnter += MouseEnter;
-            textBoxk2.MouseEnter += MouseEnter;
-            textBoxT2.MouseEnter += MouseEnter;
-            textBoxKOTE.MouseEnter += MouseEnter;
-            textBoxT0.MouseEnter += MouseEnter;
+            textBoxM.MouseEnter += MouseEnter;
+            textBoxL1.MouseEnter += MouseEnter;
+            textBoxL2.MouseEnter += MouseEnter;
+            textBoxC1.MouseEnter += MouseEnter;
+            textBoxC2.MouseEnter += MouseEnter;
+            textBoxR1.MouseEnter += MouseEnter;
+            textBoxR2.MouseEnter += MouseEnter;
 
-
-            
         }
-        string path_ = "..\\..\\output.txt";
+      
         GraphPane pane; // Графическая панель
-        LineItem Curve1, Curve2; // Создаем кривые для графика
+        LineItem Curve1, Curve2; // Создаем кривые для графиков
         PointPairList points_Gr2 = new PointPairList();
         PointPairList points_Gr3 = new PointPairList();
 
@@ -136,108 +132,217 @@ namespace V1
             tb.ShortcutsEnabled = false;
         }
 
-        private void buttonvv_Click(object sender, EventArgs e) // ввод граничных условий и построение графика 
+        private void buttonvv_Click(object sender, EventArgs e) // ввод метода
         {
             try
             {
-                //проверка ввода вида граничных условий 
+                //проверка выбора метода 
 
-                if (checkBox2.Checked == false && checkBox3.Checked == false)
-                {
-                    labelT1.Visible = false;
-                    labelT2.Visible = false;
-                    labelK.Visible = false;
-                    labelteplook.Visible = false;
-                    textBoxk1.Visible = false;
-                    textBoxk2.Visible = false;
-                    textBoxT1.Visible = false;
-                    textBoxT2.Visible = false;
-                   
-                    labelq1.Visible = false;
-                    labelq2.Visible = false;
-                    labelk1.Visible = false;
-                    labelk2.Visible = false;
-                    labelteplo.Visible = false;
-                    textBoxq1.Visible = false;
-                    textBoxq2.Visible = false;
-                    buttonPost2.Visible = false;
-                    buttonopen.Visible = false;
-
-                    throw new ApplicationException("Выберите вид граничных условий!");
-                                     
-                }
-
-                if (checkBox2.Checked == true && checkBox3.Checked == true)
-                {
-                    labelT1.Visible = false;
-                    labelT2.Visible = false;
-                    labelK.Visible = false;
-                    labelteplook.Visible = false;
-                    textBoxk1.Visible = false;
-                    textBoxk2.Visible = false;
-                    textBoxT1.Visible = false;
-                    textBoxT2.Visible = false;
-
-                    labelk1.Visible = false;
-                    labelk2.Visible = false;
-                    labelq1.Visible = false;
-                    labelq2.Visible = false;
-                    labelteplo.Visible = false;
-                    textBoxq1.Visible = false;
-                    textBoxq2.Visible = false;
-                    buttonPost2.Visible = false;
-                    buttonopen.Visible = false;
-                    throw new ApplicationException("Выберите только один вид граничных условий");
-                }
-
-                if (checkBox2.Checked == true) // Граничные условия второго рода 
-                {
-                    labelq1.Visible = true;
-                    labelq2.Visible = true;
-                    labelteplo.Visible = true;
-                    textBoxq1.Visible = true;
-                    textBoxq2.Visible = true;
-                    buttonPost2.Visible = true;
-
-                    labelT1.Visible = false;
-                    labelT2.Visible = false;
-                    labelk1.Visible = false;
-                    labelk2.Visible = false;
-                    labelK.Visible = false;
-                    labelteplook.Visible = false;
-                    textBoxk1.Visible = false;
-                    textBoxk2.Visible = false;
-                    textBoxT1.Visible = false;
-                    textBoxT2.Visible = false;
-                    buttonopen.Visible = true;
-
-
-                }
-                if (checkBox3.Checked == true) // Граничные условия третьего рода 
+                if (checkBox2.Checked == false)
                 {
 
-                    labelT1.Visible = true;
-                    labelT2.Visible = true;
-                    labelk1.Visible = true;
-                    labelk2.Visible = true;
-                    labelK.Visible = true;
-                    labelteplook.Visible = true;
-                    textBoxk1.Visible = true;
-                    textBoxk2.Visible = true;
-                    textBoxT1.Visible = true;
-                    textBoxT2.Visible = true;
-                    buttonPost2.Visible = true;
-                    buttonopen.Visible = true;
-
-                    labelq1.Visible = false;
-                    labelq2.Visible = false;
-                    labelteplo.Visible = false;
-                    textBoxq1.Visible = false;
-                    textBoxq2.Visible = false;
-                   
+                    throw new ApplicationException("Выберите метод решения!");
 
                 }
 
+                //считывание информации из текстбоксов 
+
+                // время конечное 
+                double tend;
+                // параметры сигнала 
+                double Ua, f;
+                //параметры цепи
+                double R1, R2, C1, C2, L1, L2, M;
+
+                // считывание начальных данных
+                Ua = Convert.ToDouble(textBoxUa.Text);
+                f = Convert.ToDouble(textBoxf.Text);
+                tend = Convert.ToDouble(textBoxt.Text);
+                R1 = Convert.ToDouble(textBoxR1.Text);
+                R2 = Convert.ToDouble(textBoxR2.Text);
+                C1 = Convert.ToDouble(textBoxC1.Text);
+                C2 = Convert.ToDouble(textBoxC2.Text);
+                L1 = Convert.ToDouble(textBoxL1.Text);
+                L2 = Convert.ToDouble(textBoxL2.Text);
+                M = Convert.ToDouble(textBoxM.Text);
+
+                C1 = C1 * (Math.Pow(10, -6));
+                C2 = C2 * (Math.Pow(10, -6));
+
+
+                //Проверка введённых данных
+                if (tend == 0)
+                {
+                    throw new Exception("Конечное время должно быть больше 0");
+                }
+
+           /*   if (tend>1000)
+                {
+                    throw new Exception("Значение переменной выходит за границы типа double");
+                }*/
+                if (M == 0)
+                {
+                    throw new Exception("Значение взаимоиндукции должно быть больше 0");
+                }
+                if (f == 0)
+                {
+                    throw new Exception("Значение частоты должно быть больше 0");
+                }
+                if (Ua == 0)
+                {
+                    throw new Exception("Значение амплитуды входного сигнала должно быть больше 0");
+                }
+                if (R2 == 0 || C2 ==0||C1==0||R1==0||R2==0||L1==0||L2==0)
+                {
+                    throw new Exception("Невозможно рассчитать значения. Измените входные данные для параметров схемы!");
+                }
+
+
+                if (tend == 0 && f == 0 && Ua == 0)
+                {
+                    MessageBox.Show("Вы не ввели начальные условия. Поэтому Конечное время - 10с, f=50 Гц, Амплитуда 10 В");
+                    tend = 10;
+                    f = 50;
+                    Ua = 10;
+
+                }
+                //Настройка панели для построения графика
+                //Настройка осей
+                pane = Zone.GraphPane;
+                //Установка масштаба 
+                pane.XAxis.Scale.Min = 0;
+                pane.XAxis.Scale.Max = tend;
+                Zone.AxisChange();
+
+                Zone.Refresh();
+                pane.XAxis.Scale.Format = "F3";
+                pane.XAxis.Scale.FontSpec.Size = 12;
+                pane.YAxis.Scale.FontSpec.Size = 12;
+
+                //Коэффициенты для расчёта характеристического уравнения 
+               
+                double a, b, c, d, s;
+                a = (R1 * C1 * (M * M - L1 * L2)) / (R2 * M);
+                b = (M * M - R1 * R2 * L1 - L1 * L2) / (R2 * M);
+                c = ((-1) * L2 * R1 * C2 - R1 * C1 * L1 - R2 * C2 * L1) / (R2 * C2 * M);
+                d = ((-1) * R1 * R2 * C2 - L1) / (R2 * C2 * M);
+                s = R1 / (R2 * C2 * M);
+
+
+                //Решение однородного уравнения
+                //массив значений характеристического уравнения 
+                double[] l = new double[4];
+                double F, F1,x1,x2;
+                //приближение
+                int k = -2;
+                int i = 0;
+                int coef = 0;
+                //точность
+                double eps = 0.001;
+          
+                //Проверить цикл как работает 
+                while (k < 1)
+                {
+                    x2 = k;
+                    do
+                    {
+                        x1 = x2;
+                        F = a * Math.Pow(x1, 4) + b * Math.Pow(x1, 3) + c * Math.Pow(x1, 2) + d * x1 - s;
+                        F1 = 4 * a * Math.Pow(x1, 3) + 3 * b * Math.Pow(x1, 2) + 2 * c * x1 + d;
+                        x2 = x1 - F / F1;
+                        i++;
+                    }
+                    while (x2 - x1 > eps && i < 2000);
+                    
+                    l[coef] = x2;
+                    k++;
+                    coef++;
+                }
+                if (i >= 2000)
+                {
+                    throw new ApplicationException("Слишком много итераций при нахождении корней характеристического уравнения. Проверьте входные данные!");
+                }
+
+                // кол-во временных промежутков 
+                int N = 100;
+
+                // шаг 
+                double h = tend / (N - 1);
+
+                double[] U2 = new double[N];
+               
+                double w = 2 * 3.14 * f;
+                double A, B,z;
+
+                //Расчёт коэффициентов C1 C2 C3 C4 для уравнения 
+
+                double c1, c2, c3, c4;
+
+                if (checkBox2.Checked == true)
+                {
+
+                    //чистка массива точек 
+                    points_Gr2.Clear();   
+                    z = (Math.Pow((a * Math.Pow(w, 4) - c * w * w + s), 2) + Math.Pow((b * Math.Pow(w, 3) - d * w), 2));
+                    A =(-w*w*Ua*(b*Math.Pow(w,3)-d*w))/z;
+                    B = (-w * w * Ua * Math.Pow((a * Math.Pow(w, 4) - c * w * w + s), 2)) / z;
+
+                    c1 = c3 = -A - ((l[0] * A - B * w) / (l[1] - l[0]));
+                    c2 = c4 = (l[0] * A - B * w) / (l[1] - l[0]);
+
+                    //Расчёт коэффициентов 
+
+                    /*  c1=l[1]*Math.Pow(l[2],2)* Math.Pow(l[3], 3)+l[2]* Math.Pow(l[3], 2)* Math.Pow(l[1], 3)+l[3]* Math.Pow(l[1], 2)*Math.Pow(l[2], 3) - l[3] * Math.Pow(l[2], 2) * Math.Pow(l[1], 3) - l[1] * Math.Pow(l[3], 2) * Math.Pow(l[2], 3) - l[2] * Math.Pow(l[1], 2) * Math.Pow(l[3], 3);
+                        c2 = (-1) * (l[0] * Math.Pow(l[2], 2) * Math.Pow(l[3], 3) + l[2] * Math.Pow(l[3], 2) * Math.Pow(l[2], 3) + l[3] * Math.Pow(l[0], 2) * Math.Pow(l[2], 3) - l[3] * Math.Pow(l[2], 2) * Math.Pow(l[0], 3) - l[0] * Math.Pow(l[3], 2) * Math.Pow(l[2], 3) - l[2] * Math.Pow(l[0], 2) * Math.Pow(l[3], 3));
+                        c3 = l[0] * Math.Pow(l[1], 2) * Math.Pow(l[3], 3) + l[1] * Math.Pow(l[3], 2) * Math.Pow(l[0], 3) + l[3] * Math.Pow(l[0], 2) * Math.Pow(l[1], 3) - l[3] * Math.Pow(l[1], 2) * Math.Pow(l[0], 3) - l[0] * Math.Pow(l[3], 2) * Math.Pow(l[1], 3) - l[1] * Math.Pow(l[0], 2) * Math.Pow(l[3], 3);
+                        c4 = (-1) * (l[0]* Math.Pow(l[1], 2)* Math.Pow(l[2], 3)+l[1]* Math.Pow(l[2], 2)* Math.Pow(l[0], 3)+l[2]* Math.Pow(l[0], 2)* Math.Pow(l[1], 3)-l[2]* Math.Pow(l[1], 3)* Math.Pow(l[0], 3)-l[0]* Math.Pow(l[2], 2)* Math.Pow(l[1], 3)-l[1]* Math.Pow(l[0], 2)* Math.Pow(l[3], 3));
+
+                       */
+
+
+                  
+                  
+                    int g = 0;
+                    U2[g] = 0;
+                    points_Gr2.Add(g, U2[g]);
+                    g++;
+   
+                    while (g < N - 1)
+                    {
+                        U2[g] = c1 * Math.Exp((l[0]) * g*h) + c2 * Math.Exp(l[1] * g * h) + c3 * Math.Exp((l[2]) * g * h) + c4 * Math.Exp((l[3])* g * h) + A * Math.Cos(w * g * h) + B * Math.Sin(w * g * h);
+                        points_Gr2.Add(g * h, U2[g]);
+                        if (double.IsNaN(U2[g]))
+                        {
+                            throw new OverflowException("Значение переменной выходит за границы типа double");
+                        }
+                        g++;
+
+                    }
+
+                    U2[N - 1] = c1 * Math.Exp((l[0]) * tend) + c2 * Math.Exp(l[1] * tend) + c3 * Math.Exp((l[2]) * tend) + c4 * Math.Exp((l[3]) * tend) + A * Math.Cos(w * tend) + B * Math.Sin(w * tend);
+                    points_Gr2.Add(tend, U2[N - 1]);
+                    
+                    //Очищаем список кривых
+                    pane.CurveList.Clear();
+
+                    points_Gr2.TrimExcess();
+                    pane.Title.Text = "Зависимость U2(U1) по методу Неопределённых коэффициентов";
+                    Curve1 = pane.AddCurve("U2(U1)", points_Gr2, Color.Green, SymbolType.None);
+                    Curve1.Symbol.Size = 3; // Размер точки
+                    Curve1.Line.IsVisible = true;
+                    Curve1.Line.Width = 3;
+                    //pane.XAxis.Scale.Max = L;
+                    SetSize();
+
+
+                }
+
+               
+            }
+
+            catch (OverflowException mes)
+            {
+                MessageBox.Show(mes.Message);
             }
 
             catch (ApplicationException mes)
@@ -245,13 +350,26 @@ namespace V1
                 MessageBox.Show(mes.Message);
             }
 
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка преобразования. Проверьте введенные значения");
+
+            }
+          
+            catch (Exception mes)
+            {
+                MessageBox.Show(mes.Message);
+            }
+
+                       
+
         }
 
         //Настройка осей графика
         private void PaneSettings()
         {
             // Получим панель для рисования
-            GraphPane pane = zedGraphControl1.GraphPane;
+            GraphPane pane = Zone.GraphPane;
             // По оси X установим автоматический подбор масштаба
             pane.XAxis.Scale.MinAuto = true;
             pane.XAxis.Scale.MaxAuto = true;
@@ -259,13 +377,13 @@ namespace V1
             pane.YAxis.Scale.MinAuto = true;
             pane.YAxis.Scale.MaxAuto = true;
             // Вызываем метод AxisChange (), чтобы обновить данные об осях.
-            zedGraphControl1.AxisChange();
+            Zone.AxisChange();
             // Обновляем график
-            zedGraphControl1.Invalidate();
+            Zone.Invalidate();
             //Подпись осей
-            pane.XAxis.Title.Text = "х, м";
-            pane.YAxis.Title.Text = "T, C";
-            pane.Title.Text = "График зависимости T(x)";
+            pane.XAxis.Title.Text = "t, c";
+            pane.YAxis.Title.Text = "U2, B";
+            pane.Title.Text = "График зависимости U2(U1)";
             pane.XAxis.MajorGrid.IsVisible = true;
             pane.YAxis.MajorGrid.IsVisible = true;
             pane.XAxis.MajorGrid.IsZeroLine = false;
@@ -275,282 +393,22 @@ namespace V1
             pane.YAxis.Scale.FontSpec.Size = 12;
         }
 
-      
-
-        private void buttonPost2_Click(object sender, EventArgs e)// вычисление зависимости T(х) с граничными условиями
-        { 
-            //чистка массива точек 
-            points_Gr2.Clear();
-            points_Gr3.Clear();
-            //считывание информации из текстбоксов 
-            // кол-во пространнственных узлов 
-            int N = 100;
-            // время конечное 
-            double tend;
-            // физические параметры объекта 
-            double lamda, ro, q1, q2, T0, c,T1,T2,k1,k2;
-            //геометрические параметры объекта
-            double L;
-            try
-            {
-                // считывание начальных данных
-                ro = Convert.ToDouble(textBoxp.Text);
-                c = Convert.ToDouble(textBoxc.Text);
-                lamda = Convert.ToDouble(textBoxKOTE.Text);
-                L = Convert.ToDouble(textBoxL.Text);
-                tend = Convert.ToDouble(textBoxt.Text);
-                T0 = Convert.ToDouble(textBoxT0.Text);
-                double time = 0.0;
-                if (tend == 0)
-                {
-                    throw new Exception("Конечное время должно быть больше 0");
-                }
-                if (L == 0)
-                {
-                    throw new Exception("Значение перменной L  должно быть больше 0");
-                }
-                if (L >100)
-                {
-                    throw new Exception("Значение перменной L  должно быть больше 100");
-                }
-
-                if (ro == 0 && c == 0 && lamda == 0 && T0 == 0)
-                {
-                    MessageBox.Show("Вы не ввели начальные условия.  Поэтому Плоность - 8800 кг/м^3, c=381 Дж/(кг*С), Начальная температура - 20 С, lamda=384 Вт/(м*С)");
-                    ro = 8800;
-                    c = 381;
-                    T0 = 20;
-                    lamda =384;
-
-                }
-                //Настройка панели для построения графика
-                //Настройка осей
-                pane = zedGraphControl1.GraphPane;
-                //Установка масштаба 
-                pane.XAxis.Scale.Min = 0;
-                pane.XAxis.Scale.Max = L;
-                pane.XAxis.Scale.Format = "F2";
-                pane.XAxis.Scale.FontSpec.Size = 12;
-                pane.YAxis.Scale.FontSpec.Size = 12;
-                // шаг 
-                double h = L / (N - 1);
-                //коэффициент теплопроводности 
-                double a = lamda / (ro * c);
-                // шаг по времени
-                double tau = tend / 100;
-                //массивы для температуры, коэффициентов альфа и бета 
-                double[] T = new double[N];
-                double[] alfa = new double[N];
-                double[] beta = new double[N];
-
-                double ai, ci, bi, fi;
-
-                if (checkBox2.Checked == true)
-                {
 
 
-                    points_Gr2.Clear();
-                    
-                    if (textBoxq1.Text == "" && textBoxq2.Text == "")
-                    {
-                        MessageBox.Show("Вы не ввели значения тепловых потоков.  Поэтому q1=10000, q2=1000");
-                        q1 = 10000.0;
-                        q2 = 1000.0;
-                    }
-                    else
-                    {
-                        // считывание значений тепловых потоков 
-                        q1 = Convert.ToDouble(textBoxq1.Text);
-                        q2 = Convert.ToDouble(textBoxq2.Text);
-                    }                                                               
-
-                    for (int i = 0; i < N; i++)
-                    {
-                        T[i] = T0;
-                    }
-                    while (tend >= time)
-                    {
-                        
-                        //расчёт коэффициентов с учётом левого граничного условия 
-                        alfa[0] = (2.0 * a * tau) / (h * h + 2.0 * a * tau);
-                        beta[0] = (h * h * T[0] + ((2.0 * a * tau * h * q1) / lamda)) / (h * h + 2.0 * a * tau);
-
-                         for (int i = 1; i < N; i++)
-                        {
-                            // расчёт прогоночных коэфициентов 
-                            ai = lamda / (h * h);
-                            ci = lamda / (h * h);
-                            bi = 2.0 * lamda / (h * h) + ro * c / tau;
-                            fi = (-1.0) * ro * c * T[i] / tau;
-
-                            // прогоночные коэффициенты 
-                            alfa[i] = ai / (bi - ci * alfa[i - 1]);
-                            beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
-
-                        }
-                        // определение значения температуры на правой границе с учётом правых граничных условий 
-                        T[N - 1] = (2.0 * a * tau * lamda * beta[N - 1] - 2.0 * a * tau * h * q2 + h * h * lamda * T[N - 1]) / (lamda * h * h + 2.0 * a * lamda * tau * (1 - alfa[N - 1]));
-                       
-                        // определяем неизвестные температуры 
-                        for (int i = N - 2; i > -1; i--)
-                        {
-                            T[i] = alfa[i] * T[i + 1] + beta[i];
-                        }
-                        time = time + tau;
-
-                    }
-                    // Запись в файл:
-                    StreamWriter SW_ = new StreamWriter(path_);
-                 
-                   
-                        SW_.WriteLine("время процесса =" + " " + tend+""+"c");
-                        SW_.WriteLine("L, м" + " " + "T, C");
-
-                    int k = 0;
-                   
-                    //Очищаем список кривых
-                    pane.CurveList.Clear();
-                     // N = 0;
-                    while (k < N - 1)
-                    {
-                        points_Gr2.Add(k * h, T[k]);
-                        SW_.WriteLine(k*h + " " + T[k]);
-                        k++;
-                    }
-                    points_Gr2.Add(L, T[k]);
-                    SW_.WriteLine(L + " " + T[k]);
-                    //закрытие файла
-                    SW_.Close();
-
-                    points_Gr2.TrimExcess();
-                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий 2-го рода ";
-                    Curve1 = pane.AddCurve("Т(х)", points_Gr2, Color.Green, SymbolType.None);
-                    Curve1.Symbol.Size = 3; // Размер точки
-                    Curve1.Line.IsVisible = true;
-                    Curve1.Line.Width = 3;
-                    SetSize();
-                }
-
-                if (checkBox3.Checked == true) // граничные условия третьего рода 
-                {
-                    points_Gr3.Clear();
-
-                    if (textBoxk1.Text == "" && textBoxk2.Text == ""&& textBoxT2.Text == ""&&textBoxT1.Text == "")
-                    {
-                        MessageBox.Show("Вы не ввели граничные условия тертьего рода.  Поэтому T1=10, T2=12,  k1=1000, k2=500");
-                        T1 = 10.0;
-                        T2 = 12.0;
-                        k1 = 1000.0;
-                        k2 = 500.0;
-                    }
-                    else
-                    {
-                        // считывание значений тепловых потоков 
-                        k1 = Convert.ToDouble(textBoxk1.Text);
-                        k2 = Convert.ToDouble(textBoxk2.Text);
-                        T1 = Convert.ToDouble(textBoxT1.Text);
-                        T2 = Convert.ToDouble(textBoxT2.Text);
-                    }
-                    for (int i = 0; i < N; i++)
-                    {
-                        T[i] = T0;
-                    }
-                    while (tend >= time)
-                    {
-                        // time = time + tau;
-                        //расчёт коэффициентов с учётом левого граничного условия 
-                        alfa[0] = (2.0 * a * tau * lamda) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
-                        beta[0] = (lamda * h * h * T[0] + 2.0 * a * tau * k1 * h * T1) / (lamda * h * h + 2.0 * a * tau * (lamda + h * k1));
-
-                        for (int i = 1; i < N; i++)
-                        {
-                            // расчёт прогоночных коэфициентов 
-                            ai = lamda / (h * h);
-                            ci = lamda / (h * h);
-                            bi = 2.0 * lamda / (h * h) + ro * c / tau;
-                            fi = (-1.0) * ro * c * T[i] / tau;
-                            // прогоночные коэффициенты 
-                            alfa[i] = ai / (bi - ci * alfa[i - 1]);
-                            beta[i] = (ci * beta[i - 1] - fi) / (bi - ci * alfa[i - 1]);
-
-                        }
-                        // определение значения температуры на правой границе 
-                       
-                        T[N - 1] = (lamda * h * h * T[N - 1] + 2.0 * a * tau * (lamda * beta[N - 1] + h * k2 * T2)) / (lamda * h * h + 2.0 * a * tau * (h * k2 + lamda * (1 - alfa[N - 1])));                        // определяем неизвестные температуры 
-
-                        for (int i = N - 2; i > -1; i--)
-                        {
-                            T[i] = alfa[i] * T[i + 1] + beta[i];
-                        }
-                        time = time + tau;
-
-                    }
-                    int k = 0;
-                   
-                    pane.CurveList.Clear();
-                    //Определяем заголовки
-                    // Запись в файл:
-                    StreamWriter SW_ = new StreamWriter(path_);
 
 
-                    SW_.WriteLine("время процесса =" + " " + tend + "" + "c");
-                    SW_.WriteLine("L, м" + " " + "T, C");
-
-                     //Очищаем список кривых
-                    pane.CurveList.Clear();
-                    // N = 0;
-                    while (k < N - 1)
-                    {
-                        points_Gr3.Add(k * h, T[k]);
-                        SW_.WriteLine(k * h + " " + T[k]);
-                        k++;
-                    }
-                    points_Gr3.Add(L, T[k]);
-                    SW_.WriteLine(L + " " + T[k]);
-                    //закрытие файла
-                    SW_.Close();
-
-                    points_Gr3.TrimExcess();
-                    pane.Title.Text = "Зависимость T(х)с учётом граничных условий 3-го рода ";
-                    Curve2 = pane.AddCurve("Т(х)", points_Gr3, Color.Blue, SymbolType.None);
-                    Curve2.Symbol.Size = 3; // Размер точки
-                    Curve2.Line.IsVisible = true;
-                    Curve2.Line.Width = 3;
-                    SetSize();
-                }
-            }
-
-            catch (FormatException)
-            {
-                MessageBox.Show("Ошибка преобразования. Проверьте введенные значения");
-
-            }
-            catch (OverflowException)
-            {
-                MessageBox.Show("Значение переменной выходит за границы типа double");
-            }
-            catch (Exception mes)
-            {
-                MessageBox.Show(mes.Message);
-            }
-        }
-        // показать полученные данные 
-        private void buttonopen_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("D:\\0\\Доки\\Вычи.мат\\Курсовая\\V1\\V1\\output.txt");
-        }
 
         public void SetSize()
         {
-            // Включаем отображение сетки напротив крупных рисок по оси X
-            pane.XAxis.MajorGrid.IsVisible = true;
+           // Включаем отображение сетки напротив крупных рисок по оси X
+           // pane.XAxis.MajorGrid.IsVisible = true;
             // Задаем вид пунктирной линии для крупных рисок по оси X:
             // Длина штрихов равна 10 пикселям
             pane.XAxis.MajorGrid.DashOn = 10;
             // затем 5 пикселей - пропуск
             pane.XAxis.MajorGrid.DashOff = 5;
             // Включаем отображение сетки напротив крупных рисок по оси Y
-            pane.YAxis.MajorGrid.IsVisible = true;
+         //   pane.YAxis.MajorGrid.IsVisible = true;
             // Аналогично задаем вид пунктирной линии для крупных рисок по оси Y
             pane.YAxis.MajorGrid.DashOn = 10;
             pane.YAxis.MajorGrid.DashOff = 5;
@@ -558,8 +416,9 @@ namespace V1
             pane.YAxis.Scale.MaxAuto = true;
             pane.YAxis.Scale.MinAuto = true;
             pane.IsBoundedRanges = true;
-            zedGraphControl1.AxisChange();
-            zedGraphControl1.Refresh();
+            Zone.AxisChange();
+            
+            Zone.Refresh();
             
         }
 
